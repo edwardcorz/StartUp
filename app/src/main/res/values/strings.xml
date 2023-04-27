@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">StartUp</string>
-    <string name="email">  Correo</string>
-    <string name="password">  Contraseña</string>
+    <string name="email"> 👤  Correo</string>
+    <string name="password"> 🔐  Contraseña</string>
     <string name="bienvenido">BIENVENIDO</string>
     <string name="de_nuevo">DE NUEVO</string>
     <string name="login_text">Inicio de sesión</string>
@@ -16,4 +16,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="register">REGISTRO</string>
+    <string name="registrar">REGISTRAR AHORA</string>
+    <string name="con_cuenta">Ya tienes una cuenta? Ingresa ahora</string>
+    <string name="documento"> 🪪  Documento</string>
+    <string name="direccion"> 🏠  Dirección</string>
+    <string name="telefono"> 📲  Teléfono</string>
 </resources>

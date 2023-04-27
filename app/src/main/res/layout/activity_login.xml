@@ -92,6 +92,7 @@
         android:inputType="textPersonName"
         />
     <EditText
+        android:id="@+id/editText_password_login"
         android:layout_width="400dp"
         android:layout_height="50dp"
         android:fontFamily="@font/jost_regular"

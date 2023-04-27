@@ -3,6 +3,7 @@ package com.example.startup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -31,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         val loginButton: Button =findViewById(R.id.button_login)
 
         loginButton.setOnClickListener {
+            Log.i("Funciona", "Funciona")
             performLogin()
         }
 

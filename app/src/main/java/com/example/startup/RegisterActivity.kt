@@ -38,21 +38,27 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         //lets get the email and password from the user
-
     }
 
     private fun performSignUp() {
         val email = findViewById<EditText>(R.id.editText_email_register)
         val password = findViewById<EditText>(R.id.editText_password_register)
+        //Campos que faltan para el registro *********{
+        val id = findViewById<EditText>(R.id.editText_ID_register)
+        val direccion = findViewById<EditText>(R.id.editText_direccion_register)
+        val telefono = findViewById<EditText>(R.id.editText_telefono_register)
+        //******************************************+*}
 
-        if (email.text.isEmpty() || password.text.isEmpty()){
-            Toast.makeText(this, "Por favor llena todos los campos", Toast.LENGTH_SHORT)
+        //Validar que todos los campos estén llenos para registrar usuario
+        if (email.text.isEmpty() || password.text.isEmpty() || id.text.isEmpty() || direccion.text.isEmpty() || telefono.text.isEmpty()){
+            Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT)
                 .show()
             return
         }
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
+
 
         auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
             .addOnCompleteListener(this) { task ->

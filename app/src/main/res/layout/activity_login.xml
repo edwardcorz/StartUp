@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@drawable/background"
+    android:background="@drawable/login_wallpaper"
     >
 
   <View
@@ -24,8 +24,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="121dp"
+        android:fontFamily="@font/jost_regular"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
         android:text="@string/bienvenido"
         android:textColor="@color/gray"
         android:textSize="60sp"
@@ -34,16 +35,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/jost_regular"
         android:text="@string/bienvenido"
         android:textSize="60sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_marginTop="-83dp"
-        android:layout_marginStart="26dp"
+        android:layout_marginTop="-85dp"
+        android:layout_marginStart="27dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/jost_regular"
         android:text="@string/de_nuevo"
         android:textSize="60sp"
         android:textStyle="bold"
@@ -55,16 +58,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/de_nuevo"
+        android:fontFamily="@font/jost_regular"
         android:textSize="60sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_marginTop="-84dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginTop="-85dp"
+        android:layout_marginStart="57dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/jost_regular"
         android:text="@string/login_text"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -78,6 +83,7 @@
         android:id="@+id/editText_email_login"
         android:layout_marginTop="40dp"
         android:layout_marginStart="5dp"
+        android:fontFamily="@font/jost_regular"
         android:layout_width="400dp"
         android:layout_height="50dp"
         android:background="@android:drawable/editbox_background_normal"
@@ -88,6 +94,7 @@
     <EditText
         android:layout_width="400dp"
         android:layout_height="50dp"
+        android:fontFamily="@font/jost_regular"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:background="@android:drawable/editbox_background_normal"
@@ -96,10 +103,13 @@
         android:inputType="textPassword"
         />
     <Button
+        android:id="@+id/button_login"
         android:layout_width="396dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/azul"
+        android:fontFamily="@font/jost_regular"
         android:text="@string/entrar"
         android:letterSpacing="1"
         />
@@ -109,31 +119,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
+        android:fontFamily="@font/jost_regular"
         android:layout_marginTop="100dp"
-        android:text="@string/register"
+        android:text="@string/sin_cuenta"
         android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password_login"
         />
-
-      <TextView
-          android:id="@+id/textView_register_now"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="100dp"
-          android:text="Sin cuenta? Registrate ahora"
-          android:textColor="@color/black"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/editText_password_login" />
-
-      <Button
-          android:id="@+id/button_login"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="10dp"
-          android:text="Login"
-          app:layout_constraintEnd_toEndOf="@+id/editText_password_login"
-          app:layout_constraintStart_toStartOf="@+id/editText_password_login"
-          app:layout_constraintTop_toBottomOf="@+id/editText_password_login" />
   </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

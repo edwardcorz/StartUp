@@ -117,7 +117,7 @@ android:background="@drawable/login_wallpaper"
         />
 
     <TextView
-        android:id="@+id/textView_register_now"
+        android:id="@+id/textView_login_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"

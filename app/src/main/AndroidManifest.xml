@@ -4,18 +4,16 @@
 
     <application
         android:allowBackup="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StartUp"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".PrincipalActivity"
-            android:exported="true"
-            tools:targetApi="31"/>
+            android:exported="true" />
         <activity
             android:name=".calendar"
             android:exported="false"
@@ -35,11 +33,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

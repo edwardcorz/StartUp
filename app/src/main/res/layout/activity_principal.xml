@@ -125,35 +125,35 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PrincipalActivity"
-    android:orientation="vertical"
-    tools:ignore="Orientation">
-
-    <TextView
-        android:id="@+id/textView"
+    <!--
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre Lorem" />
+        android:layout_height="match_parent"
+        tools:context=".PrincipalActivity"
+        android:orientation="vertical"
+        tools:ignore="Orientation">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="155dp"
-        android:layout_height="88dp"
-        app:srcCompat="@drawable/perfil" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Lorem" />
 
-    <com.echo.holographlibrary.BarGraph
-        android:id="@+id/graphBar"
-        android:layout_width="match_parent"
-        android:layout_height="428dp"
-        android:layout_margin="16dp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="155dp"
+            android:layout_height="88dp"
+            app:srcCompat="@drawable/perfil" />
+
+        <com.echo.holographlibrary.BarGraph
+            android:id="@+id/graphBar"
+            android:layout_width="match_parent"
+            android:layout_height="428dp"
+            android:layout_margin="16dp" />
 
 
-</LinearLayout>
--->
+    </LinearLayout>
+    -->

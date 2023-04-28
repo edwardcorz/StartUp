@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">StartUp</string>
-    <string name="email"> 👤  Correo</string>
-    <string name="password"> 🔐  Contraseña</string>
+    <string name="email">  Correo</string>
+    <string name="password">  Contraseña</string>
     <string name="bienvenido">BIENVENIDO</string>
     <string name="de_nuevo">DE NUEVO</string>
     <string name="login_text">Inicio de sesión</string>
-    <string name="entrar">      ENTRAR   >></string>
+    <string name="entrar">   ENTRAR</string>
     <string name="sin_cuenta">Sin cuenta? Registrate ahora</string>
     <string name="title_activity_calendar">calendar</string>
     <!-- Strings used for fragments for navigation -->

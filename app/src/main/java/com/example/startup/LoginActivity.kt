@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -29,12 +30,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val loginButton: Button =findViewById(R.id.button_login)
+        val loginButton: GridLayout =findViewById(R.id.boton_completo)
 
         loginButton.setOnClickListener {
             Log.i("Funciona", "Funciona")
             performLogin()
         }
+
 
         //LOGIN AUTHENT
     }

@@ -153,11 +153,14 @@
         android:background="@color/azul"
         android:textAlignment="center">
 
-      <Button
+      <TextView
           android:id="@+id/button_login"
           android:layout_width="346dp"
           android:layout_height="50dp"
-          android:background="@android:color/transparent"
+          android:textColor="@color/white"
+          android:textSize="20sp"
+          android:layout_marginTop="19sp"
+          android:layout_marginStart="10dp"
           android:fontFamily="@font/jost_regular"
           android:letterSpacing="1"
           android:text="@string/entrar"
@@ -166,8 +169,7 @@
       <ImageView
           android:layout_width="40dp"
           android:layout_height="40dp"
-          android:layout_marginTop="5dp"
-          android:layout_marginStart="5dp"
+          android:layout_marginTop="14dp"
           android:src="@drawable/flechas"
           android:textAlignment="center"
           />

@@ -136,7 +136,7 @@
           android:background="@android:color/transparent"
           android:ems="10"
           android:hint="@string/password"
-          android:inputType="textPersonName"
+          android:inputType="textPassword"
           />
 
     </GridLayout>

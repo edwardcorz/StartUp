@@ -19,7 +19,7 @@
     <string name="register">REGISTRO</string>
     <string name="registrar">REGISTRAR AHORA</string>
     <string name="con_cuenta">Ya tienes una cuenta? Ingresa ahora</string>
-    <string name="documento"> 🪪  Documento</string>
-    <string name="direccion"> 🏠  Dirección</string>
-    <string name="telefono"> 📲  Teléfono</string>
+    <string name="documento">  Documento</string>
+    <string name="direccion">  Dirección</string>
+    <string name="telefono">  Teléfono</string>
 </resources>

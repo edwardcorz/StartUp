@@ -1,16 +1,25 @@
 <resources>
     <string name="app_name">StartUp</string>
-    <string name="email"> 👤  Correo</string>
-    <string name="password"> 🔐  Contraseña</string>
+    <string name="email">  Correo</string>
+    <string name="password">  Contraseña</string>
     <string name="bienvenido">BIENVENIDO</string>
     <string name="de_nuevo">DE NUEVO</string>
     <string name="login_text">Inicio de sesión</string>
-    <string name="entrar">      ENTRAR   >></string>
+    <string name="entrar">   ENTRAR</string>
     <string name="sin_cuenta">Sin cuenta? Registrate ahora</string>
+    <string name="title_activity_calendar">calendar</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="register">REGISTRO</string>
     <string name="registrar">REGISTRAR AHORA</string>
     <string name="con_cuenta">Ya tienes una cuenta? Ingresa ahora</string>
-    <string name="documento"> 🪪  Documento</string>
-    <string name="direccion"> 🏠  Dirección</string>
-    <string name="telefono"> 📲  Teléfono</string>
+    <string name="documento">  Documento</string>
+    <string name="direccion">  Dirección</string>
+    <string name="telefono">  Teléfono</string>
 </resources>

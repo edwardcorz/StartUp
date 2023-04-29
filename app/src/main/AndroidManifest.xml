@@ -8,9 +8,12 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:theme="@style/Theme.StartUp"
+        android:supportsRtl="true"
         tools:targetApi="31">
+        <activity
+            android:name=".PrincipalActivity"
+            android:exported="true" />
         <activity
             android:name=".calendar"
             android:exported="false"
@@ -18,6 +21,7 @@
             android:theme="@style/Theme.StartUp.NoActionBar" />
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/Theme.StartUp.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +34,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
+
     </application>
 
 </manifest>

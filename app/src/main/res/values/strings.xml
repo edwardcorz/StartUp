@@ -22,4 +22,10 @@
     <string name="documento">  Documento</string>
     <string name="direccion">  Dirección</string>
     <string name="telefono">  Teléfono</string>
+    <string name="basico">Plan básico</string>
+    <string name="descripcion">Descripción</string>
+    <string name="mi_plan">Mi plan</string>
+    <string name="asistencia_tres_veces">Asistencia 3 veces por semana</string>
+    <string name="pay">Pagar</string>
+    <string name="more_plans">Más planes</string>
 </resources>

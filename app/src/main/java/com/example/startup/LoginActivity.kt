@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, Navigate to the main Activity
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, CalendarActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Exitoso",

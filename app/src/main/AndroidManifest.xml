@@ -12,11 +12,6 @@
         android:theme="@style/Theme.StartUp"
         tools:targetApi="31">
         <activity
-            android:name=".calendar"
-            android:exported="false"
-            android:label="@string/title_activity_calendar"
-            android:theme="@style/Theme.StartUp.NoActionBar" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -29,7 +24,7 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CalendarActivity"
             android:exported="false"></activity>
     </application>
 

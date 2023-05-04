@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.EditText
+import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -13,7 +13,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +28,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val loginButton: Button =findViewById(R.id.button_login)
+        val loginButton: GridLayout =findViewById(R.id.boton_completo)
 
         loginButton.setOnClickListener {
             Log.i("Funciona", "Funciona")
             performLogin()
         }
+
 
         //LOGIN AUTHENT
     }

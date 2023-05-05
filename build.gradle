@@ -4,14 +4,11 @@ buildscript {
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.14'
-<<<<<<< HEAD
 
-=======
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
     repositories {
         mavenCentral()
->>>>>>> fec28a95375f1a63d9eab2062eb915729f56d5ba
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {

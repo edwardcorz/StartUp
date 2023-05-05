@@ -11,4 +11,5 @@
     <color name="placeholder" >#C9C9C9</color>
     <color name="azul">#24495F</color>
     <color name="red">#CB4335</color>
+    <color name="cardGray">#EFEFEF</color>
 </resources>

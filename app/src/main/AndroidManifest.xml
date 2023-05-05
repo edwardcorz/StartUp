@@ -13,13 +13,9 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".paymentInterface.PaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/Theme.StartUp"/>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"

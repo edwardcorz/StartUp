@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.example.startup.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -58,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, Navigate to the main Activity
-                    val intent = Intent(this, CalendarActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Exitoso",

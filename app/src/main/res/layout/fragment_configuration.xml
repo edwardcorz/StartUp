@@ -4,78 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="379dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-
-
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
-
-            <EditText
-                android:id="@+id/editTextText1"
-                android:layout_width="400dp"
-                android:layout_height="35dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="7dp"
-                android:background="@drawable/borde_redondo"
-                android:ems="10"
-                android:hint=" Contraseña"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/editTextText2"
-                android:layout_width="400dp"
-                android:layout_height="35dp"
-                android:layout_below="@+id/editTextText1"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="7dp"
-                android:background="@drawable/borde_redondo"
-                android:ems="10"
-                android:hint=" Confirmar contraseña"
-                android:inputType="text" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="400dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextText2"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="7dp"
-                android:text="G u a r d a r" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
+    tools:context=".ui.configuration.ConfigurationFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -101,36 +30,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="7dp"
-
-                android:layout_marginRight="7dp"
-                android:layout_marginbottom="5dp"
+                android:layout_marginStart="15dp"
                 android:fontFamily="@font/jost_bold"
                 android:text="Cambiar contraseña"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btn"
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginStart="136dp"
-                android:layout_marginLeft="318dp"
+                android:layout_marginLeft="314dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="10dp"
-                android:layout_toEndOf="@+id/textView3"
                 android:text="✎"
                 app:backgroundTint="#AC3131" />
 
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
-
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -193,8 +114,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

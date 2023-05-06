@@ -65,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, move to the next activity i.e. MainActivity
 
-                    val intent = Intent(this, CalendarActivity::class.java)
+                    val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Exitoso",

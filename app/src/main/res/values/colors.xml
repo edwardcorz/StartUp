@@ -12,4 +12,5 @@
     <color name="azul">#24495F</color>
     <color name="red">#CB4335</color>
     <color name="cardGray">#EFEFEF</color>
+    <color name="colorPrimaryDark">#FD5959</color>
 </resources>

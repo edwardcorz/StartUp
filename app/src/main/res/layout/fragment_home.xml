@@ -41,7 +41,7 @@
             app:srcCompat="@drawable/perfil" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nombre"
             android:layout_width="206dp"
             android:layout_height="43dp"
             android:layout_marginStart="188dp"

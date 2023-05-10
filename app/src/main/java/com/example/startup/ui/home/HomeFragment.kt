@@ -3,16 +3,19 @@ package com.example.startup.ui.home
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.startup.R
 import com.example.startup.databinding.FragmentHomeBinding
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
@@ -27,6 +30,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        val auth = FirebaseAuth.getInstance()
 
         val homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
@@ -61,6 +66,28 @@ class HomeFragment : Fragment() {
         chart.axisRight.isEnabled = false
         chart.xAxis.isEnabled = false
 
+        // Mostrar nombre del usuario
+
+        var textView=root.findViewById<TextView>(R.id.nombre)
+
+        val currentUser = auth.currentUser
+        Log.i("TAG", "---------------")
+
+        if (currentUser != null) {
+            val name = currentUser.displayName
+            Log.i("TAG", "++++++++++++++++++$name")
+            if (name != null) {
+                // El usuario tiene un nombre establecido
+                // Puedes asignar el nombre al TextView
+                textView.text = name
+            } else {
+                // El usuario no tiene un nombre establecido
+                // Maneja esta situación apropiadamente
+            }
+        } else {
+            // El usuario no está autenticado
+            // Maneja esta situación apropiadamente
+        }
 
         return root
     }

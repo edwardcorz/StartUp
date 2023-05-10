@@ -39,6 +39,7 @@ class CalendarFragment : Fragment() {
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         val calendarView = root.findViewById<CalendarView>(R.id.calendarView)
 
         val calendarInstance = Calendar.getInstance()
@@ -71,20 +72,20 @@ class CalendarFragment : Fragment() {
             val dayOfWeekString = dateFormat2.format(calendarInstance.time)
 
             //conexion2(dayOfWeekString)
-            conexion2(dayOfWeekString)
+
+
+            root.findViewById<TextView>(R.id.serie).setText(conexion2(dayOfWeekString))
         }
-
         return root
-
     }
 
-    fun conexion2(dia :String){
-
+    fun conexion2(dia :String): StringBuilder {
 
         val mDatabase = FirebaseDatabase.getInstance().getReference(" Ejercicios/$dia")
+        var seriesSalida = StringBuilder()
         mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var seriesSalida = StringBuilder()
+
                 if (dataSnapshot.exists()) {
                     val ejerciciosMap = dataSnapshot.value as Map<*, *>
                     Log.i("TAG","Ejercicios para el día $dia:")
@@ -93,16 +94,19 @@ class CalendarFragment : Fragment() {
                         //Log.i("FLAG"," $nombre $series:")
                     }
                     Log.i("TAG"," $seriesSalida")
+                    //return (seriesSalida)
                     //findViewById<TextView>(R.id.serie).setText("Este es un texto largo que se desea mostrar en un TextView. El texto puede tener muchas líneas y ser muy extenso. Para mostrar el texto completo, se puede utilizar el atributo android:maxLines=\"unlimited\" en el archivo XML del layout del TextView.")
                     //root.findViewById<TextView>(R.id.serie).setText(seriesSalida)
                 }
             }
+
 
             override fun onCancelled(error: DatabaseError) {
                 // Código que se ejecuta cuando ocurre un error al obtener los datos de Firebase
                 Log.i("TAG", "Error al leer los datos.")
             }
         })
+        return  seriesSalida
     }
     override fun onDestroyView() {
         super.onDestroyView()

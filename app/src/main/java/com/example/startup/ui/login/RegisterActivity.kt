@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -58,12 +59,37 @@ class RegisterActivity : AppCompatActivity() {
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
-
+        val inputName = id.text.toString()
 
         auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, move to the next activity i.e. MainActivity
+
+                    // ------------------- guardar datos -----------
+
+                    val currentUser = auth.currentUser
+                    // Verifica si el usuario está autenticado y asigna el nombre
+                    if (currentUser != null) {
+                        // Crea un objeto UserProfileChangeRequest para actualizar el nombre
+                        val profileUpdates = UserProfileChangeRequest.Builder()
+                            .setDisplayName(inputName)
+                            .build()
+
+                        // Actualiza el perfil del usuario con el nuevo nombre
+                        currentUser.updateProfile(profileUpdates)
+                            .addOnCompleteListener { profileUpdateTask ->
+                                if (profileUpdateTask.isSuccessful) {
+                                    // El nombre se actualizó correctamente
+                                    // Puedes realizar otras acciones necesarias
+                                } else {
+                                    // Hubo un error al actualizar el nombre
+                                    // Maneja el error apropiadamente
+                                }
+                            }
+                    }
+
+                    // -------------------------------------------
 
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)

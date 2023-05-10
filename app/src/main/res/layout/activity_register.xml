@@ -26,7 +26,7 @@ android:background="@drawable/login_wallpaper"
         android:layout_height="wrap_content"
         android:fontFamily="@font/jost_regular"
         android:layout_marginStart="79dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:text="@string/register"
         android:textColor="@color/gray"
         android:textSize="60sp"
@@ -46,7 +46,7 @@ android:background="@drawable/login_wallpaper"
 
     <EditText
         android:id="@+id/editText_ID_register"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="14dp"
         android:fontFamily="@font/jost_regular"
         android:layout_width="380dp"
@@ -58,6 +58,20 @@ android:background="@drawable/login_wallpaper"
         android:hint="@string/documento"
         android:inputType="textPersonName"
         />
+    <EditText
+        android:id="@+id/editText_nombre"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:textColor="@color/azul"
+        android:textStyle="bold"
+        android:fontFamily="@font/jost_regular"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="14dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+       />
     <EditText
         android:id="@+id/editText_email_register"
         android:layout_width="380dp"
@@ -132,13 +146,12 @@ android:background="@drawable/login_wallpaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/jost_regular"
-        android:layout_marginTop="50dp"
-        android:textStyle="bold"
         android:text="@string/con_cuenta"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/editText_password_login"
-        />
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password_login" />
 
 </LinearLayout>
 

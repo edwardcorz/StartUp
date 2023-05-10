@@ -39,4 +39,5 @@
     <string name="asistencia_cinco_veces">Asistencia 5 veces por semana</string>
     <string name="price_person">$ 120.000</string>
     <string name="asistencia_premium">Asistencia agendada por el ususario</string>
+    <string name="name">Nombre y apellidos</string>
 </resources>

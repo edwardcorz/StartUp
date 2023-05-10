@@ -54,6 +54,16 @@ class ConfigurationFragment : Fragment() {
             myDialog.show()
         }
 
+        val editBtn = binding.editBtn // Reemplace 'btnOpenDialog' con el ID de su botón en el diseño
+        editBtn.setOnClickListener {
+            val dialogBinding = layoutInflater.inflate(R.layout.dialog3, null)
+            val myDialog = Dialog(requireContext())
+            myDialog.setContentView(dialogBinding)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+        }
+
         return root
     }
 

@@ -71,11 +71,9 @@ class HomeFragment : Fragment() {
         var textView=root.findViewById<TextView>(R.id.nombre)
 
         val currentUser = auth.currentUser
-        Log.i("TAG", "---------------")
 
         if (currentUser != null) {
             val name = currentUser.displayName
-            Log.i("TAG", "++++++++++++++++++$name")
             if (name != null) {
                 // El usuario tiene un nombre establecido
                 // Puedes asignar el nombre al TextView

@@ -11,7 +11,6 @@ import com.example.startup.R
 import android.util.Log
 import android.widget.TextView
 import com.example.startup.databinding.FragmentCalendarBinding
-import com.example.startup.databinding.FragmentHomeBinding
 import com.example.startup.ui.home.HomeViewModel
 import com.google.firebase.database.*
 import java.lang.StringBuilder
@@ -59,6 +58,15 @@ class CalendarFragment : Fragment() {
 
         root.findViewById<TextView>(R.id.fecha).setText(formattedDate.toString())
 
+        // TODO Mostrar la rutina del dia default
+        /*
+        val formato1 = SimpleDateFormat("EEEE", Locale("es", "ES"))
+        val diaAux = formato1.format(calendarInstance.time)
+
+        conexion2(diaAux) { seriesSalida ->
+            root.findViewById<TextView>(R.id.serie).text = seriesSalida
+        }*/
+
         calendarView.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
 
             calendarInstance.set(year, month, dayOfMonth)
@@ -73,16 +81,17 @@ class CalendarFragment : Fragment() {
 
             //conexion2(dayOfWeekString)
 
-
-            root.findViewById<TextView>(R.id.serie).setText(conexion2(dayOfWeekString))
+            conexion2(dayOfWeekString) { seriesSalida ->
+                root.findViewById<TextView>(R.id.seriesWarmUp).text = seriesSalida
+            }
         }
         return root
     }
 
-    fun conexion2(dia :String): StringBuilder {
+    fun conexion2(dia: String, callback: (String) -> Unit) {
 
         val mDatabase = FirebaseDatabase.getInstance().getReference(" Ejercicios/$dia")
-        var seriesSalida = StringBuilder()
+        var seriesSalida = ""
         mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
@@ -90,10 +99,12 @@ class CalendarFragment : Fragment() {
                     val ejerciciosMap = dataSnapshot.value as Map<*, *>
                     Log.i("TAG","Ejercicios para el día $dia:")
                     for ((nombre, series) in ejerciciosMap ) {
-                        seriesSalida.append(series).append("\n")
-                        //Log.i("FLAG"," $nombre $series:")
+                        seriesSalida += series
+                        seriesSalida += "\n"
+                        Log.i("FLAG"," $nombre $series:")
                     }
-                    Log.i("TAG"," $seriesSalida")
+                    callback(seriesSalida)
+
                     //return (seriesSalida)
                     //findViewById<TextView>(R.id.serie).setText("Este es un texto largo que se desea mostrar en un TextView. El texto puede tener muchas líneas y ser muy extenso. Para mostrar el texto completo, se puede utilizar el atributo android:maxLines=\"unlimited\" en el archivo XML del layout del TextView.")
                     //root.findViewById<TextView>(R.id.serie).setText(seriesSalida)
@@ -106,7 +117,6 @@ class CalendarFragment : Fragment() {
                 Log.i("TAG", "Error al leer los datos.")
             }
         })
-        return  seriesSalida
     }
     override fun onDestroyView() {
         super.onDestroyView()

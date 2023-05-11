@@ -11,7 +11,7 @@ import com.example.startup.R
 import com.example.startup.databinding.FragmentConfigurationBinding
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-
+// Importar las bibliotecas necesarias para cambiar foto de perfil
 
 class ConfigurationFragment : Fragment() {
 

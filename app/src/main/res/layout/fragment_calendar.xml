@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.calendar.CalendarFragment">
@@ -136,13 +143,16 @@
         android:id="@+id/cardView3"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="65dp"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.097">
+        app:layout_constraintVertical_bias="0.097"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -150,14 +160,14 @@
 
             <TextView
                 android:id="@+id/wod"
-                android:text="Wod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
+                android:text="Wod"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/seriesWod"
@@ -166,18 +176,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
+                android:text=""
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_below="@+id/wod"/>
 
         </RelativeLayout>
-
-
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

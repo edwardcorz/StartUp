@@ -220,6 +220,19 @@
                 android:fontFamily="@font/jost_regular"
                 android:text="@string/asistencia_cinco_veces" />
 
+            <Button
+                android:id="@+id/button_semanal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/jost_bold"
+                android:text="@string/cambiar"
+                android:textSize="16sp"
+                app:cornerRadius="16dp"
+                app:elevation="10dp" />
+                />
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -237,7 +250,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_regular"
-                android:text="Plan Personalizado"
+                android:text="@string/personalizado"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -268,6 +281,19 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginStart="12dp"
                 />
+
+            <Button
+                android:id="@+id/button_personalizado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/jost_bold"
+                android:text="@string/cambiar"
+                android:textSize="16sp"
+                app:cornerRadius="16dp"
+                app:elevation="10dp" />
+            />
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>

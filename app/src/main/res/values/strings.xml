@@ -40,4 +40,6 @@
     <string name="price_person">$ 120.000</string>
     <string name="asistencia_premium">Asistencia agendada por el ususario</string>
     <string name="name">Nombre y apellidos</string>
+    <string name="cambiar">Cambiar</string>
+    <string name="personalizado">Plan Personalizado</string>
 </resources>

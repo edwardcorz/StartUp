@@ -71,7 +71,6 @@ class HomeFragment : Fragment() {
         chart.axisLeft.axisMinimum = 0f
         chart.axisRight.isEnabled = false
         chart.xAxis.isEnabled = false
-<<<<<<< Updated upstream
 
         // Mostrar nombre del usuario
 
@@ -93,11 +92,9 @@ class HomeFragment : Fragment() {
             // El usuario no está autenticado
             // Maneja esta situación apropiadamente
         }
-=======
         chart.axisLeft.isEnabled = false
         chart.setVisibleXRangeMaximum(8F)
         chart.moveViewToX(1F)
->>>>>>> Stashed changes
 
         return root
     }

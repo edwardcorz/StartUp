@@ -48,6 +48,7 @@
             android:layout_marginTop="84dp"
             android:fontFamily="@font/jost_bold"
             android:text="Nombre Lorem"
+            android:textColor="#000000"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,6 +61,7 @@
             android:layout_marginTop="124dp"
             android:fontFamily="@font/jost_medium"
             android:text="@string/basico"
+            android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,15 +92,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart"
-            android:layout_width="362dp"
-            android:layout_height="342dp"
-            android:layout_marginTop="80dp"
+
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/chart"
+                    android:layout_width="546dp"
+                    android:layout_height="380dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingClass">
+
+                </com.github.mikephil.charting.charts.BarChart>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="436dp"
+            android:text="Cantidad de dias asistidos"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingClass" />
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

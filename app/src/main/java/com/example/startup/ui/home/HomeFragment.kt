@@ -46,14 +46,20 @@ class HomeFragment : Fragment() {
             BarEntry(0f, 4f),
             BarEntry(1f, 6f),
             BarEntry(2f, 8f),
-            BarEntry(3f, 2f)
+            BarEntry(3f, 7f),
+            BarEntry(4f, 1f),
+            BarEntry(5f, 8f),
+            BarEntry(6f, 3f),
+            BarEntry(7f, 5f),
+            BarEntry(8f, 8f),
+            BarEntry(9f, 2f)
         )
 
         val dataSet = BarDataSet(entries, "Ejemplo de datos")
-        dataSet.color = Color.BLUE
+        dataSet.color = Color.RED
 
         val data = BarData(dataSet)
-        data.barWidth = 0.9f
+        data.barWidth = 0.3f
 
         chart.data = data
         chart.setFitBars(true)
@@ -65,6 +71,7 @@ class HomeFragment : Fragment() {
         chart.axisLeft.axisMinimum = 0f
         chart.axisRight.isEnabled = false
         chart.xAxis.isEnabled = false
+<<<<<<< Updated upstream
 
         // Mostrar nombre del usuario
 
@@ -86,6 +93,11 @@ class HomeFragment : Fragment() {
             // El usuario no está autenticado
             // Maneja esta situación apropiadamente
         }
+=======
+        chart.axisLeft.isEnabled = false
+        chart.setVisibleXRangeMaximum(8F)
+        chart.moveViewToX(1F)
+>>>>>>> Stashed changes
 
         return root
     }

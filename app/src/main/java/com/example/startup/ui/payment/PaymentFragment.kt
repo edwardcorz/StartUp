@@ -7,26 +7,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.startup.R
+import com.example.startup.databinding.FragmentHomeBinding
+import com.example.startup.databinding.FragmentPaymentBinding
+import com.example.startup.ui.home.HomeViewModel
 
 class PaymentFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PaymentFragment()
-    }
+    private var _binding: FragmentPaymentBinding? = null
 
-    private lateinit var viewModel: PaymentViewModel
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_payment, container, false)
+    ): View {
+        val paymentViewModel =
+            ViewModelProvider(this)[PaymentViewModel::class.java]
+
+        _binding = FragmentPaymentBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PaymentViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
-
 }

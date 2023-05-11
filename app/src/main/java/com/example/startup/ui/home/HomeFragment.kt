@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
 
         // Mostrar nombre del usuario
 
-        var textView=root.findViewById<TextView>(R.id.nombre)
+        var textView=root.findViewById<TextView>(R.id.nombreHome)
 
         val currentUser = auth.currentUser
 

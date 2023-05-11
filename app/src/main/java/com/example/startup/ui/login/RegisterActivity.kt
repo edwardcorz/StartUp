@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
@@ -65,6 +66,7 @@ class RegisterActivity : AppCompatActivity() {
         val inputDireccion = direccion.text.toString()
         val inputTelefono = telefono.text.toString()
 
+
         auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -73,14 +75,30 @@ class RegisterActivity : AppCompatActivity() {
                     // ------------------- guardar datos -----------
 
                     val currentUser = auth.currentUser
+                    val db = FirebaseFirestore.getInstance()
                     // Verifica si el usuario está autenticado y asigna el nombre
                     if (currentUser != null) {
+                        val userDocumentRef = db.collection("usuarios").document(currentUser.uid)
+                        val userData = hashMapOf(
+                            "nombre" to inputName,
+                            "documento" to inputIdentifier,
+                            "direccion" to inputDireccion,
+                            "telefono" to inputTelefono
+                        )
+                        userDocumentRef.set(userData)
+                            .addOnSuccessListener {
+                                // Los datos se guardaron correctamente en Firestore
+                            }.addOnFailureListener { e ->
+                                // Error al guardar los datos en Firestore. Maneja el error apropiadamente.
+                            }
+                        //---------------
+
                         // Crea un objeto UserProfileChangeRequest para actualizar el nombre
                         val profileUpdates = UserProfileChangeRequest.Builder()
                             .setDisplayName(inputName)
                             .build()
-
                         // Actualiza el perfil del usuario con el nuevo nombre
+
                         currentUser.updateProfile(profileUpdates)
                             .addOnCompleteListener { profileUpdateTask ->
                                 if (profileUpdateTask.isSuccessful) {

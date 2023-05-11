@@ -45,7 +45,6 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="7dp">
 
-
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="120dp"
@@ -54,10 +53,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true"
-
                     android:layout_marginLeft="7dp"
                     android:layout_marginTop="27dp"
-
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
                     android:text="v o l v e r" />
@@ -71,16 +68,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true"
-
                     android:layout_marginLeft="7dp"
                     android:layout_marginTop="27dp"
-
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
                     android:text="E d i t a r"
                     app:backgroundTint="#AC3131" />
-
-
             </GridLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

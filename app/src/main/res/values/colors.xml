@@ -13,4 +13,5 @@
     <color name="red">#CB4335</color>
     <color name="cardGray">#EFEFEF</color>
     <color name="colorPrimaryDark">#FD5959</color>
+    <color name="calendarColor">#EFEDF6</color>
 </resources>

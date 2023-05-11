@@ -45,9 +45,10 @@ class RegisterActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.editText_email_register)
         val password = findViewById<EditText>(R.id.editText_password_register)
         //Campos que faltan para el registro *********{
-        val id = findViewById<EditText>(R.id.editText_ID_register)
-        val direccion = findViewById<EditText>(R.id.editText_direccion_register)
-        val telefono = findViewById<EditText>(R.id.editText_telefono_register)
+        val id = findViewById<EditText>(R.id.identifier)
+        val nombre = findViewById<EditText>(R.id.nombre)
+        val direccion = findViewById<EditText>(R.id.direccion)
+        val telefono = findViewById<EditText>(R.id.telefono)
         //******************************************+*}
 
         //Validar que todos los campos estén llenos para registrar usuario
@@ -59,7 +60,10 @@ class RegisterActivity : AppCompatActivity() {
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
-        val inputName = id.text.toString()
+        val inputIdentifier = id.text.toString()
+        val inputName = nombre.text.toString()
+        val inputDireccion = direccion.text.toString()
+        val inputTelefono = telefono.text.toString()
 
         auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
             .addOnCompleteListener(this) { task ->

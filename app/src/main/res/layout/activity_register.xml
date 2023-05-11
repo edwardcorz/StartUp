@@ -45,7 +45,7 @@ android:background="@drawable/login_wallpaper"
         />
 
     <EditText
-        android:id="@+id/editText_ID_register"
+        android:id="@+id/identifier"
         android:layout_marginTop="30dp"
         android:layout_marginStart="14dp"
         android:fontFamily="@font/jost_regular"
@@ -59,7 +59,7 @@ android:background="@drawable/login_wallpaper"
         android:inputType="textPersonName"
         />
     <EditText
-        android:id="@+id/editText_nombre"
+        android:id="@+id/nombre"
         android:layout_width="380dp"
         android:layout_height="50dp"
         android:textColor="@color/azul"
@@ -101,7 +101,7 @@ android:background="@drawable/login_wallpaper"
         android:inputType="textPassword"
         />
     <EditText
-        android:id="@+id/editText_direccion_register"
+        android:id="@+id/direccion"
         android:layout_width="380dp"
         android:layout_height="50dp"
         android:textColor="@color/azul"
@@ -115,7 +115,7 @@ android:background="@drawable/login_wallpaper"
         android:inputType="textPostalAddress"
         />
     <EditText
-        android:id="@+id/editText_telefono_register"
+        android:id="@+id/telefono"
         android:layout_marginTop="10dp"
         android:layout_marginStart="14dp"
         android:fontFamily="@font/jost_regular"

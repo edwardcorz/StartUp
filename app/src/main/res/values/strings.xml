@@ -28,6 +28,10 @@
     <string name="asistencia_tres_veces">Asistencia 3 veces por semana</string>
     <string name="pay">Pagar</string>
     <string name="more_plans">Más planes</string>
+    <string name="boton_agendar">Agendar</string>
+    <string name="titulo_rutina">Rutina del dia</string>
+
+
 
     <string name="title_home">Inicio</string>
     <string name="title_dashboard">Calendario</string>

@@ -38,8 +38,6 @@ class PaymentFragment : Fragment() {
         conexion.conexionNombre(textView)
 
         return root
-
-        var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
     }
 
     override fun onDestroyView() {

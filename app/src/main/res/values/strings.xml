@@ -48,4 +48,7 @@
     <string name="log_out">Log out</string>
     <string name="resumen">Tu resumen de entreno</string>
     <string name="dias_asistidos">Cantidad de dias asistidos</string>
+    <string name="rutina_label">Rutina del dia</string>
+    <string name="warm_up">Warm Up</string>
+    <string name="wod">Wod</string>
 </resources>

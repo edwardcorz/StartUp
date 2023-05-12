@@ -10,7 +10,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.calendar.CalendarFragment">
 
 
@@ -38,20 +38,22 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                >
 
                 <TextView
                     android:id="@+id/fecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="22dp"
                     android:layout_marginTop="0dp"
-                    android:layout_marginEnd="106dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="105dp"
+                    android:layout_marginBottom="0dp"
                     android:fontFamily="@font/jost_bold"
                     android:text=""
                     android:textColor="#332121"
@@ -87,7 +89,7 @@
         android:id="@+id/rutina"
         android:layout_width="114dp"
         android:layout_height="29dp"
-        android:text="Rutina del dia"
+        android:text="@string/rutina_label"
         android:textColor="#332121"
         android:textColorLink="#595353"
         android:textSize="18sp"
@@ -117,8 +119,8 @@
 
             <TextView
                 android:id="@+id/WarmUp"
-                android:text="Warm Up"
-                android:layout_marginLeft="10dp"
+                android:text="@string/warm_up"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:textSize="18sp"
@@ -128,7 +130,7 @@
 
             <TextView
                 android:id="@+id/seriesWarmUp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:textSize="18sp"
@@ -163,10 +165,10 @@
                 android:id="@+id/wod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
-                android:text="Wod"
+                android:text="@string/wod"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -174,7 +176,7 @@
                 android:id="@+id/seriesWod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:text=""

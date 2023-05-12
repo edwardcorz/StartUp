@@ -70,7 +70,7 @@
         android:layout_width="347dp"
         android:layout_height="309dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="31dp"
         android:background="#ffff"
 
@@ -79,6 +79,7 @@
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
         android:firstDayOfWeek="?attr/motionDurationMedium2"
         android:textAlignment="center"
+
         android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.687"

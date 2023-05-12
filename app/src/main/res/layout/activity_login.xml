@@ -81,7 +81,8 @@
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
           android:src="@drawable/perfil_usuario"
-          android:textAlignment="center" />
+          android:textAlignment="center"
+          />
 
       <EditText
           android:id="@+id/editText_email_login"
@@ -94,7 +95,8 @@
           android:hint="@string/email"
           android:inputType="textPersonName"
           android:textColor="@color/azul"
-          android:textStyle="bold" />
+          android:textStyle="bold"
+          tools:ignore="TextFields" />
 
     </GridLayout>
 
@@ -148,14 +150,14 @@
         android:layout_height="55dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
-        android:background="@color/azul"
+        android:background="@drawable/rounded_corners"
         android:columnCount="2"
         android:rowCount="1"
         android:textAlignment="center">
 
       <TextView
           android:id="@+id/button_login"
-          android:layout_width="333dp"
+          android:layout_width="310dp"
           android:layout_height="48dp"
           android:layout_marginTop="12sp"
           android:fontFamily="@font/jost_regular"

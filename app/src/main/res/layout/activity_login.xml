@@ -19,129 +19,129 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:orientation="vertical">
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_regular"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="100dp"
+        android:fontFamily="@font/jost_regular"
         android:text="@string/bienvenido"
         android:textColor="@color/gray"
         android:textSize="60sp"
-        android:textStyle="bold"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_regular"
-        android:text="@string/bienvenido"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginTop="-85dp"
-        android:layout_marginStart="27dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_regular"
-        android:text="@string/de_nuevo"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:textColor="@color/gray"
-        android:layout_marginTop="-6dp"
-        android:layout_marginStart="60dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/de_nuevo"
-        android:fontFamily="@font/jost_regular"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginTop="-85dp"
-        android:layout_marginStart="57dp"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-100dp"
         android:fontFamily="@font/jost_regular"
+        android:text="@string/bienvenido"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/de_nuevo"
+        android:textColor="@color/gray"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="-100dp"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/de_nuevo"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/jost_regular"
+        android:letterSpacing="0.3"
         android:text="@string/login_text"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="30sp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:letterSpacing="0.3"
-        />
+        android:textStyle="bold" />
 
-        <GridLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:columnCount="2"
         android:rowCount="1"
-        android:background="@android:drawable/editbox_background_normal"
         android:textAlignment="center">
 
       <ImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
-          android:textAlignment="center"
-          android:src="@drawable/perfil_usuario"/>
+          android:src="@drawable/perfil_usuario"
+          android:textAlignment="center" />
 
       <EditText
           android:id="@+id/editText_email_login"
-          android:fontFamily="@font/jost_regular"
-          android:layout_marginStart="5dp"
           android:layout_width="340dp"
           android:layout_height="50dp"
-          android:textColor="@color/azul"
-          android:textStyle="bold"
+          android:layout_marginStart="5dp"
           android:background="@android:color/transparent"
           android:ems="10"
+          android:fontFamily="@font/jost_regular"
           android:hint="@string/email"
           android:inputType="textPersonName"
-          />
+          android:textColor="@color/azul"
+          android:textStyle="bold" />
 
     </GridLayout>
 
     <GridLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:columnCount="2"
         android:rowCount="1"
-        android:background="@android:drawable/editbox_background_normal"
         android:textAlignment="center">
 
       <ImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
-          android:textAlignment="center"
-          android:src="@drawable/candado"/>
+          android:src="@drawable/candado"
+          android:textAlignment="center" />
 
       <EditText
           android:id="@+id/editText_password_login"
-          android:fontFamily="@font/jost_regular"
-          android:layout_marginStart="5dp"
           android:layout_width="340dp"
           android:layout_height="50dp"
-          android:textColor="@color/azul"
-          android:textStyle="bold"
+          android:layout_marginStart="5dp"
           android:background="@android:color/transparent"
           android:ems="10"
+          android:fontFamily="@font/jost_regular"
           android:hint="@string/password"
           android:inputType="textPassword"
-          />
+          android:textColor="@color/azul"
+          android:textStyle="bold" />
 
     </GridLayout>
 
@@ -150,34 +150,33 @@
         android:id="@+id/boton_completo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="8dp"
+        android:background="@color/azul"
         android:columnCount="2"
         android:rowCount="1"
-        android:background="@color/azul"
         android:textAlignment="center">
 
       <TextView
           android:id="@+id/button_login"
           android:layout_width="346dp"
-          android:layout_height="50dp"
-          android:textColor="@color/white"
-          android:textSize="20sp"
-          android:layout_marginTop="19sp"
+          android:layout_height="48dp"
           android:layout_marginStart="10dp"
-          android:textStyle="bold"
+          android:layout_marginTop="16sp"
           android:fontFamily="@font/jost_regular"
           android:letterSpacing="1"
           android:text="@string/entrar"
-          android:textAlignment="center" />
+          android:textAlignment="center"
+          android:textColor="@color/white"
+          android:textSize="20sp"
+          android:textStyle="bold" />
 
       <ImageView
           android:layout_width="40dp"
           android:layout_height="40dp"
           android:layout_marginTop="14dp"
           android:src="@drawable/flechas"
-          android:textAlignment="center"
-          />
+          android:textAlignment="center" />
 
     </GridLayout>
 
@@ -186,13 +185,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
-        android:fontFamily="@font/jost_regular"
         android:layout_marginTop="90dp"
+        android:fontFamily="@font/jost_regular"
         android:text="@string/sin_cuenta"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/editText_password_login"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editText_password_login" />
   </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

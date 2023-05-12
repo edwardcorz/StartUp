@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StartUp</string>
+    <string name="app_name">Thruster App</string>
     <string name="email">  Correo</string>
     <string name="password">  Contraseña</string>
     <string name="bienvenido">BIENVENIDO</string>

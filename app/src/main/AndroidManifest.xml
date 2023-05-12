@@ -28,9 +28,7 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CalendarActivity"
+            android:theme="@style/Theme.StartUp.NoActionBar"
             android:exported="false" />
     </application>
 

@@ -16,7 +16,7 @@
             android:padding="15dp">
 
             <EditText
-                android:id="@+id/editTextText1"
+                android:id="@+id/nuevoNombre"
                 android:layout_width="400dp"
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
@@ -33,10 +33,10 @@
                 android:inputType="text" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/guardarNuevoNombre"
                 android:layout_width="400dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextText1"
+                android:layout_below="@+id/nuevoNombre"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentEnd="true"

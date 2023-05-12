@@ -14,7 +14,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.startup.LoginActivity
 import com.example.startup.R
+import com.example.startup.conexionBD
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 
 open class Listeners : Fragment() {
 
@@ -93,14 +96,76 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun dialog3Listener(editBtn: TextView) {
+    fun dialog3Listener(editBtn: TextView, root : View) {
+
         editBtn.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.dialog3, null)
+            val inflater  = LayoutInflater.from(requireActivity())
+            val dialogView = inflater.inflate(R.layout.dialog3, null)
             val myDialog = Dialog(requireContext())
-            myDialog.setContentView(dialogBinding)
+            myDialog.setContentView(dialogView)
             myDialog.setCancelable(true)
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myDialog.show()
+
+            cambiarNombre(dialogView,myDialog, root)
+
         }
+
     }
+
+    fun cambiarNombre(dialogView : View , myDialog: Dialog, root:View){
+
+        val guardar = dialogView.findViewById<Button>(R.id.guardarNuevoNombre)
+        val nombreEdit = dialogView.findViewById<EditText>(R.id.nuevoNombre)
+
+        guardar.setOnClickListener {
+            var nombre = nombreEdit.text.toString()
+
+            val db = FirebaseFirestore.getInstance()
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            val userRef = db.collection("usuarios").document(userId!!)
+
+            val nuevoNombre = nombre // El nuevo nombre que deseas asignar
+
+            val actualizaciones = hashMapOf<String, Any>(
+                "nombre" to nuevoNombre
+            )
+
+            userRef.update(actualizaciones)
+                .addOnSuccessListener {
+                    Log.i("TAG", "El nombre se actualizó correctamente ; $nuevoNombre")
+                    Toast.makeText(requireContext(), "El nombre se guardó correctamente", Toast.LENGTH_SHORT).show()
+                    myDialog.dismiss()
+                    var conexion = conexionBD()
+
+                    conexion.conexionNombre(root.findViewById(R.id.nombreConfiguration))
+                    // El nombre se actualizó correctamente
+                }
+                .addOnFailureListener { exception ->
+                    // Manejar el error al actualizar el nombre
+                }
+
+
+
+            //prueba
+            /*
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(nombre)
+                .build()
+
+            currentUser?.updateProfile(profileUpdates)
+                ?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.i("TAG", "El nombre se actualizó correctamente")
+                        Toast.makeText(requireContext(), "El nombre se guardó correctamente", Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        Log.i("TAG", "Hubo un error al actualizar el nombre")
+                    }
+                }*/
+        }
+
+    }
+
 }

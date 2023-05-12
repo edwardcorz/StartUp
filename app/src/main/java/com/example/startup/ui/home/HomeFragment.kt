@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.startup.R
+import com.example.startup.conexionBD
 import com.example.startup.databinding.FragmentHomeBinding
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
@@ -18,7 +19,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
-
+    private val conexion =conexionBD()
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -30,9 +31,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val auth = FirebaseAuth.getInstance()
-
         val homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
 
@@ -74,24 +72,10 @@ class HomeFragment : Fragment() {
 
         // Mostrar nombre del usuario
 
-        var textView=root.findViewById<TextView>(R.id.nombreHome)
+        var textView = root.findViewById<TextView>(R.id.nombreHome)
 
-        val currentUser = auth.currentUser
+        conexion.conexionNombre(textView)
 
-        if (currentUser != null) {
-            val name = currentUser.displayName
-            if (name != null) {
-                // El usuario tiene un nombre establecido
-                // Puedes asignar el nombre al TextView
-                textView.text = name
-            } else {
-                // El usuario no tiene un nombre establecido
-                // Maneja esta situación apropiadamente
-            }
-        } else {
-            // El usuario no está autenticado
-            // Maneja esta situación apropiadamente
-        }
         chart.axisLeft.isEnabled = false
         chart.setVisibleXRangeMaximum(8F)
         chart.moveViewToX(1F)

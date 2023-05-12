@@ -38,7 +38,7 @@
             android:layout_marginStart="52dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nombre"
+            app:layout_constraintTop_toTopOf="@+id/nombreHome"
             app:layout_constraintVertical_bias="0.576"
             app:srcCompat="@drawable/perfil" />
 

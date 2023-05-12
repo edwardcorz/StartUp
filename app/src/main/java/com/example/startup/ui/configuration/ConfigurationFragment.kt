@@ -17,12 +17,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.startup.LoginActivity
+import com.example.startup.conexionBD
 
 // Importar las bibliotecas necesarias para cambiar foto de perfil
 
 class   ConfigurationFragment : Listeners(){
-
-
+    private val conexion = conexionBD()
     private var _binding: FragmentConfigurationBinding? = null
 
     // This property is only valid between onCreateView and
@@ -47,8 +47,9 @@ class   ConfigurationFragment : Listeners(){
         val btnx = binding.btnx
         dialog2Listener(btnx)
 
-        val editBtn = binding.editBtn
-        dialog3Listener(editBtn)
+        val editBtn = binding.guardarNombre
+        dialog3Listener(editBtn, root)
+
 
         val imageView = binding.imageView // Reemplace 'btnOpenDialog' con el ID de su botón en el diseño
         imageView.setOnClickListener {
@@ -60,6 +61,9 @@ class   ConfigurationFragment : Listeners(){
             myDialog.show()
         }
 
+        var textView = root.findViewById<TextView>(R.id.nombreConfiguration)
+
+        conexion.conexionNombre(textView)
         return root
     }
 

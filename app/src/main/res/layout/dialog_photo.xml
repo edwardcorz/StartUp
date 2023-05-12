@@ -42,38 +42,33 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="200dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="7dp">
+                android:layout_marginEnd="24dp">
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv1"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentEnd="true"
+                    android:textSize="12sp"
                     android:layout_marginLeft="7dp"
+                    android:letterSpacing="0.4"
                     android:layout_marginTop="27dp"
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
-                    android:text="v o l v e r" />
+                    android:text="@string/volver_button" />
 
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv1"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentEnd="true"
                     android:layout_marginLeft="7dp"
                     android:layout_marginTop="27dp"
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
-                    android:text="E d i t a r"
-                    app:backgroundTint="#AC3131" />
+                    android:letterSpacing="0.4"
+                    android:textSize="12sp"
+                    android:text="@string/editar_button"
+                    app:backgroundTint="@color/buttonRed" />
             </GridLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

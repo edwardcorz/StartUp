@@ -27,31 +27,31 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="346dp"
-            android:layout_height="40dp"
+            android:layout_width="300dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="128dp"
             app:cardCornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.407"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="134dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="279dp"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/fecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="257dp"
+                    android:layout_height="42dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="120dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/jost_bold"
                     android:text=""
                     android:textColor="#332121"
@@ -67,19 +67,19 @@
         android:id="@+id/calendarView"
         android:layout_width="347dp"
         android:layout_height="309dp"
-        android:backgroundTint="#EFEDF6"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="31dp"
-
-
         android:background="#ffff"
+
+
+        android:backgroundTint="#EFEDF6"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
         android:firstDayOfWeek="?attr/motionDurationMedium2"
         android:textAlignment="center"
         android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 

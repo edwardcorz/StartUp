@@ -1,6 +1,5 @@
 package com.example.startup.ui.calendar
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,9 +10,7 @@ import com.example.startup.R
 import android.util.Log
 import android.widget.TextView
 import com.example.startup.databinding.FragmentCalendarBinding
-import com.example.startup.ui.home.HomeViewModel
 import com.google.firebase.database.*
-import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -32,9 +29,6 @@ class CalendarFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val homeViewModel =
-            ViewModelProvider(this)[CalendarViewModel::class.java]
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root

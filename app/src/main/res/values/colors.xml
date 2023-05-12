@@ -14,4 +14,6 @@
     <color name="cardGray">#EFEFEF</color>
     <color name="colorPrimaryDark">#FD5959</color>
     <color name="calendarColor">#EFEDF6</color>
+    <color name="buttonRed">#AC3131</color>
+    <color name="textRed">#781015</color>
 </resources>

@@ -148,6 +148,7 @@
           android:layout_marginTop="16sp"
           android:fontFamily="@font/jost_regular"
           android:letterSpacing="1"
+          android:textAlignment="center"
           android:text="@string/entrar"
           android:textColor="@color/white"
           android:textSize="20sp"

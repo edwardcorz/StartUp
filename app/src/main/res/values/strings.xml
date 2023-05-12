@@ -47,4 +47,5 @@
     <string name="close_sesion">Está seguro de cerrar la sesión?</string>
     <string name="log_out">Log out</string>
     <string name="resumen">Tu resumen de entreno</string>
+    <string name="dias_asistidos">Cantidad de dias asistidos</string>
 </resources>

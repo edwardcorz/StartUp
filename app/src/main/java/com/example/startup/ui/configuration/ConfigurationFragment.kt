@@ -1,10 +1,7 @@
 package com.example.startup.ui.configuration
 
 import android.app.Dialog
-import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +9,7 @@ import com.example.startup.R
 import com.example.startup.databinding.FragmentConfigurationBinding
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import com.example.startup.LoginActivity
 import com.example.startup.conexionBD
 
 // Importar las bibliotecas necesarias para cambiar foto de perfil

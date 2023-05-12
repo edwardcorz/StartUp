@@ -197,7 +197,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="250dp"
+                android:layout_marginStart="242dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_regular"
                 android:text="@string/price"
@@ -219,7 +219,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="60dp"
                 android:fontFamily="@font/jost_regular"
-                android:text="@string/asistencia_cinco_veces" />
+                android:text="@string/asistencia_cinco_veces"
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button_semanal"
@@ -229,7 +230,7 @@
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/jost_bold"
                 android:text="@string/cambiar"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:cornerRadius="16dp"
                 app:elevation="10dp" />
                 />
@@ -259,7 +260,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="250dp"
+                android:layout_marginStart="242dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_regular"
                 android:text="@string/price_person"
@@ -274,14 +275,15 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="12dp"
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="60dp"
                 android:fontFamily="@font/jost_regular"
                 android:text="@string/asistencia_premium"
-                android:layout_marginTop="60dp"
-                android:layout_marginStart="12dp"
-                />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button_personalizado"
@@ -291,7 +293,7 @@
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/jost_bold"
                 android:text="@string/cambiar"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:cornerRadius="16dp"
                 app:elevation="10dp" />
             />

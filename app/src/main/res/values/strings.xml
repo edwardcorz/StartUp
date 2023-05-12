@@ -42,4 +42,8 @@
     <string name="name">Nombre y apellidos</string>
     <string name="cambiar">Cambiar</string>
     <string name="personalizado">Plan Personalizado</string>
+    <string name="volver_button">volver</string>
+    <string name="editar_button">Editar</string>
+    <string name="close_sesion">Está seguro de cerrar la sesión?</string>
+    <string name="log_out">Log out</string>
 </resources>

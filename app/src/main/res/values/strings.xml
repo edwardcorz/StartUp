@@ -51,4 +51,5 @@
     <string name="rutina_label">Rutina del dia</string>
     <string name="warm_up">Warm Up</string>
     <string name="wod">Wod</string>
+    <string name="forgot_password">Olvidaste tu contraseña?</string>
 </resources>

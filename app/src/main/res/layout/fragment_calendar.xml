@@ -10,7 +10,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.calendar.CalendarFragment">
 
 
@@ -38,20 +38,22 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                >
 
                 <TextView
                     android:id="@+id/fecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="22dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="120dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="105dp"
+                    android:layout_marginBottom="0dp"
                     android:fontFamily="@font/jost_bold"
                     android:text=""
                     android:textColor="#332121"
@@ -67,31 +69,31 @@
         android:id="@+id/calendarView"
         android:layout_width="347dp"
         android:layout_height="309dp"
-        android:backgroundTint="@color/calendarColor"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="31dp"
-
-
         android:background="#ffff"
+
+
+        android:backgroundTint="@color/calendarColor"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
         android:firstDayOfWeek="?attr/motionDurationMedium2"
         android:textAlignment="center"
         android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <TextView
         android:id="@+id/rutina"
-        android:layout_width="114dp"
+        android:layout_width="157dp"
         android:layout_height="29dp"
+        android:fontFamily="@font/jost_bold"
         android:text="Rutina del dia"
         android:textColor="#332121"
         android:textColorLink="#595353"
         android:textSize="18sp"
-        android:fontFamily="@font/jost_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
@@ -117,18 +119,20 @@
 
             <TextView
                 android:id="@+id/WarmUp"
-                android:text="Warm Up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
+                android:text="Warm Up"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/seriesWarmUp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:textSize="18sp"
@@ -163,10 +167,11 @@
                 android:id="@+id/wod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:text="Wod"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -174,12 +179,11 @@
                 android:id="@+id/seriesWod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
-                android:text=""
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 android:layout_below="@+id/wod"/>
 
         </RelativeLayout>

@@ -7,11 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#CCCCCC</color>
+    <color name="gray">#A7A7A7</color>
     <color name="placeholder" >#C9C9C9</color>
     <color name="azul">#24495F</color>
     <color name="red">#CB4335</color>
     <color name="cardGray">#EFEFEF</color>
     <color name="colorPrimaryDark">#FD5959</color>
     <color name="calendarColor">#EFEDF6</color>
+    <color name="buttonRed">#AC3131</color>
+    <color name="textRed">#781015</color>
 </resources>

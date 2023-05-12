@@ -1,6 +1,5 @@
 package com.example.startup.ui.calendar
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,9 +10,7 @@ import com.example.startup.R
 import android.util.Log
 import android.widget.TextView
 import com.example.startup.databinding.FragmentCalendarBinding
-import com.example.startup.ui.home.HomeViewModel
 import com.google.firebase.database.*
-import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -32,9 +29,6 @@ class CalendarFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val homeViewModel =
-            ViewModelProvider(this)[CalendarViewModel::class.java]
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -81,42 +75,62 @@ class CalendarFragment : Fragment() {
 
             //conexion2(dayOfWeekString)
 
-            conexion2(dayOfWeekString) { seriesSalida ->
+            val entrenamiento = "warm up"
+            conexion2(dayOfWeekString ,entrenamiento) { seriesSalida ->
                 root.findViewById<TextView>(R.id.seriesWarmUp).text = seriesSalida
+            }
+            val entrenamiento2 = "wod"
+            conexion2(dayOfWeekString ,entrenamiento2) { seriesSalida ->
+                root.findViewById<TextView>(R.id.seriesWod).text = seriesSalida
             }
         }
         return root
     }
 
-    fun conexion2(dia: String, callback: (String) -> Unit) {
+    fun conexion2(dia: String, entrenamiento:String, callback: (String) -> Unit) {
 
         val mDatabase = FirebaseDatabase.getInstance().getReference(" Ejercicios/$dia")
-        var seriesSalida = ""
-        mDatabase.addValueEventListener(object : ValueEventListener {
+        var seriesWod = ""
+        var seriesWarmUp = ""
+        mDatabase.child(entrenamiento).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 if (dataSnapshot.exists()) {
+                    for (ejercicioSnapshot in dataSnapshot.children) {
+                        val ejercicio = ejercicioSnapshot.key
+                        val repeticiones = ejercicioSnapshot.getValue(String::class.java)
+                        seriesWarmUp+= ejercicio+" - "+repeticiones+"\n"
+
+                    }
+                    callback(seriesWarmUp)
+
+
+
+
+                    /*
                     val ejerciciosMap = dataSnapshot.value as Map<*, *>
                     Log.i("TAG","Ejercicios para el día $dia:")
                     for ((nombre, series) in ejerciciosMap ) {
-                        seriesSalida += series
-                        seriesSalida += "\n"
+                        seriesWarmUp += series
+                        seriesWarmUp += "\n"
                         Log.i("FLAG"," $nombre $series:")
                     }
-                    callback(seriesSalida)
+                    callback(seriesWarmUp)
 
                     //return (seriesSalida)
                     //findViewById<TextView>(R.id.serie).setText("Este es un texto largo que se desea mostrar en un TextView. El texto puede tener muchas líneas y ser muy extenso. Para mostrar el texto completo, se puede utilizar el atributo android:maxLines=\"unlimited\" en el archivo XML del layout del TextView.")
                     //root.findViewById<TextView>(R.id.serie).setText(seriesSalida)
+                    */
                 }
             }
-
 
             override fun onCancelled(error: DatabaseError) {
                 // Código que se ejecuta cuando ocurre un error al obtener los datos de Firebase
                 Log.i("TAG", "Error al leer los datos.")
             }
         })
+
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

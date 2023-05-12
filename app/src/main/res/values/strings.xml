@@ -46,6 +46,7 @@
     <string name="editar_button">Editar</string>
     <string name="close_sesion">Está seguro de cerrar la sesión?</string>
     <string name="log_out">Salir</string>
+
     <string name="resumen">Tu resumen de entreno</string>
     <string name="dias_asistidos">Cantidad de dias asistidos</string>
     <string name="rutina_label">Rutina del dia</string>

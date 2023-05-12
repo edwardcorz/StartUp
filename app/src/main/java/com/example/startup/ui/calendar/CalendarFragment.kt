@@ -53,13 +53,19 @@ class CalendarFragment : Fragment() {
         root.findViewById<TextView>(R.id.fecha).setText(formattedDate.toString())
 
         // TODO Mostrar la rutina del dia default
-        /*
+
         val formato1 = SimpleDateFormat("EEEE", Locale("es", "ES"))
         val diaAux = formato1.format(calendarInstance.time)
+        Log.i("Flag", "$diaAux ----------------------")
 
-        conexion2(diaAux) { seriesSalida ->
-            root.findViewById<TextView>(R.id.serie).text = seriesSalida
-        }*/
+        val entrenamiento = "warm up"
+        conexion2(diaAux ,entrenamiento) { seriesSalida ->
+            root.findViewById<TextView>(R.id.seriesWarmUp).text = seriesSalida
+        }
+        val entrenamiento2 = "wod"
+        conexion2(diaAux ,entrenamiento2) { seriesSalida ->
+            root.findViewById<TextView>(R.id.seriesWod).text = seriesSalida
+        }
 
         calendarView.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
 

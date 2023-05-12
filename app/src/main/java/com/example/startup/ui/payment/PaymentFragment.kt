@@ -39,7 +39,7 @@ class PaymentFragment : Fragment() {
 
         return root
 
-        var buttonPagar = root.findViewById<Button>(R.id.button)
+        var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
     }
 
     override fun onDestroyView() {

@@ -49,10 +49,8 @@
                 android:layout_marginRight="10dp"
                 android:text="✎"
                 app:backgroundTint="#AC3131" />
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
@@ -101,6 +99,9 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="413dp"
@@ -113,9 +114,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView2"
-            android:layout_width="145dp"
+            android:layout_width="118dp"
             android:layout_height="118dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -125,16 +126,19 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/circle" />
 
-        <ImageView
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginStart="52dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/nombreConfiguration"
             app:layout_constraintVertical_bias="0.576"
-            app:srcCompat="@drawable/perfil" />
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:srcCompat="@drawable/queen" />
 
         <TextView
             android:id="@+id/nombreConfiguration"

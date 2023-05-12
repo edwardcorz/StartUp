@@ -76,6 +76,7 @@
         android:backgroundTint="#EFEDF6"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
         android:firstDayOfWeek="?attr/motionDurationMedium2"
+        android:selectedWeekBackgroundColor="@color/azul"
         android:textAlignment="center"
         android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,13 +86,13 @@
 
     <TextView
         android:id="@+id/rutina"
-        android:layout_width="114dp"
-        android:layout_height="29dp"
-        android:text="Rutina del dia"
-        android:textColor="#332121"
-        android:textColorLink="#595353"
-        android:textSize="18sp"
+        android:layout_width="185dp"
+        android:layout_height="27dp"
         android:fontFamily="@font/jost_bold"
+        android:text="Rutina del dia"
+        android:textColor="@color/black"
+        android:textColorLink="#595353"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
@@ -117,14 +118,15 @@
 
             <TextView
                 android:id="@+id/WarmUp"
-                android:text="Warm Up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
+                android:text="Warm Up"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/seriesWarmUp"
@@ -167,6 +169,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:text="Wod"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -179,7 +182,6 @@
                 android:fontFamily="@font/jost_bold"
                 android:text=""
                 android:textSize="18sp"
-                android:textStyle="bold"
                 android:layout_below="@+id/wod"/>
 
         </RelativeLayout>

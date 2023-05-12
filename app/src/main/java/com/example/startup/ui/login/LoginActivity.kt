@@ -8,21 +8,18 @@ import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.startup.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
-    val splashScreen = installSplashScreen()
 
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        splashScreen.setKeepOnScreenCondition{false}
+
 
         auth = Firebase.auth
 
@@ -83,4 +80,5 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 }
+
 

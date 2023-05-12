@@ -206,7 +206,6 @@ open class Listeners : Fragment() {
 
         val editar = dialogView.findViewById<Button>(R.id.editar)
         editar.setOnClickListener{
-            //val imageRef = storageReference.child("imageUser/$uid.jpg")
             subirFoto()
         }
 

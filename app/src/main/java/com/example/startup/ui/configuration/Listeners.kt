@@ -1,9 +1,12 @@
 package com.example.startup.ui.configuration
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +18,11 @@ import androidx.fragment.app.Fragment
 import com.example.startup.LoginActivity
 import com.example.startup.R
 import com.example.startup.conexionBD
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 open class Listeners : Fragment() {
 
@@ -147,6 +152,20 @@ open class Listeners : Fragment() {
 
 
 
+            fun dialogPhotoListener(btn: Button) {
+                btn.setOnClickListener {
+                    val inflater  = LayoutInflater.from(requireActivity())
+                    val dialogView = inflater.inflate(R.layout.dialog1, null)
+                    val myDialog = Dialog(requireContext())
+                    myDialog.setContentView(dialogView)
+                    myDialog.setCancelable(true)
+                    myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    myDialog.show()
+
+                    guardar(dialogView,myDialog)
+                }
+            }
+
             //prueba
             /*
             val currentUser = FirebaseAuth.getInstance().currentUser
@@ -168,4 +187,63 @@ open class Listeners : Fragment() {
 
     }
 
+    fun dialogPhotoListener(imageView: ShapeableImageView, root: View) {
+        imageView.setOnClickListener {
+            val dialogBinding = layoutInflater.inflate(R.layout.dialog_photo, null)
+            val myDialog = Dialog(requireContext())
+            myDialog.setContentView(dialogBinding)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+            editarListener(dialogBinding)
+        }
+    }
+
+
+    val storageReference = FirebaseStorage.getInstance().reference
+    fun  editarListener(dialogView: View){
+
+
+        val editar = dialogView.findViewById<Button>(R.id.editar)
+        editar.setOnClickListener{
+            //val imageRef = storageReference.child("imageUser/$uid.jpg")
+            subirFoto()
+        }
+
+    }
+
+    companion object{
+        private const val PICK_IMAGE_REQUEST = 1
+    }
+
+
+    fun subirFoto(){
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val imageUri: Uri = data.data!!
+
+            // Genera un nombre de archivo único para la imagen de perfil
+            val fileName = "${System.currentTimeMillis()}_${imageUri.lastPathSegment}"
+
+            // Crea una referencia al archivo en Firebase Storage
+            val profileImageRef = storageReference.child("profile_images/$fileName")
+
+            // Sube la imagen al almacenamiento de Firebase Storage
+            profileImageRef.putFile(imageUri)
+                .addOnSuccessListener {
+                    // La imagen se ha subido exitosamente
+                    Toast.makeText(requireContext(), "Foto de perfil subida correctamente", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    // Error al subir la imagen
+                    Toast.makeText(requireContext(), "Error al subir la foto de perfil", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
 }

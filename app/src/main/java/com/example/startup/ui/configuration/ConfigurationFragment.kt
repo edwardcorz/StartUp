@@ -34,8 +34,6 @@ class   ConfigurationFragment : Listeners(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val configurationViewModel =
-            ViewModelProvider(this)[ConfigurationViewModel::class.java]
 
         _binding = FragmentConfigurationBinding.inflate(inflater, container, false)
         val root: View = binding.root

@@ -83,31 +83,32 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/jost_bold"
-            android:text="Tu resumen de entreno"
+            android:text="@string/resumen"
             android:textColor="#781015"
             android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/chart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="546dp"
+            android:layout_height="380dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingClass">
 
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/chart"
-                    android:layout_width="546dp"
-                    android:layout_height="380dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingClass">
-
-                </com.github.mikephil.charting.charts.BarChart>
+        </com.github.mikephil.charting.charts.BarChart>
 
         <TextView
             android:id="@+id/textView6"

@@ -135,20 +135,19 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/nombreConfiguration"
             app:layout_constraintVertical_bias="0.576"
             app:shapeAppearanceOverlay="@style/circleImageView"
             app:srcCompat="@drawable/queen" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nombreConfiguration"
             android:layout_width="206dp"
             android:layout_height="43dp"
             android:layout_marginStart="188dp"
             android:layout_marginTop="80dp"
             android:textColor="@color/black"
             android:fontFamily="@font/jost_bold"
-            android:text="Nombre Lorem"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -168,7 +167,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/editBtn"
+            android:id="@+id/guardarNombre"
             android:layout_width="58dp"
             android:layout_height="49dp"
             android:gravity="center"

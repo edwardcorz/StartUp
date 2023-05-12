@@ -85,13 +85,13 @@
 
     <TextView
         android:id="@+id/rutina"
-        android:layout_width="114dp"
+        android:layout_width="157dp"
         android:layout_height="29dp"
+        android:fontFamily="@font/jost_bold"
         android:text="Rutina del dia"
         android:textColor="#332121"
         android:textColorLink="#595353"
         android:textSize="18sp"
-        android:fontFamily="@font/jost_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
@@ -117,14 +117,15 @@
 
             <TextView
                 android:id="@+id/WarmUp"
-                android:text="Warm Up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
+                android:text="Warm Up"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/seriesWarmUp"
@@ -167,6 +168,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:text="Wod"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -177,9 +179,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
-                android:text=""
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 android:layout_below="@+id/wod"/>
 
         </RelativeLayout>

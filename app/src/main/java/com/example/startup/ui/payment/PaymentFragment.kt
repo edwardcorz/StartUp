@@ -30,7 +30,7 @@ class PaymentFragment : Fragment() {
         _binding = FragmentPaymentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var textView=root.findViewById<TextView>(R.id.nombrePayment)
+        val textView=root.findViewById<TextView>(R.id.nombrePayment)
 
         conexion.conexionNombre(textView)
 

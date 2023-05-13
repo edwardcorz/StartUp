@@ -40,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
         val loginButton: GridLayout =findViewById(R.id.boton_completo)
 
         loginButton.setOnClickListener {
-            Log.i("Funciona", "Funciona")
             performLogin()
         }
 
@@ -55,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
 
         //null checks on inputs
         if (email.text.isEmpty() || password.text.isEmpty()) {
-            Toast.makeText(this, "LLena todos los campos", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Todos los campos son requeridos", Toast.LENGTH_SHORT)
                 .show()
             return
         }
@@ -71,13 +70,13 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
-                    Toast.makeText(baseContext, "Exitoso",
+                    Toast.makeText(baseContext, "Bienvenido",
                         Toast.LENGTH_SHORT).show()
 
                 } else {
                     // If sign in fails, display a message to the user.
 
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Error de autenticacón.",
                         Toast.LENGTH_SHORT).show()
                 }
             }

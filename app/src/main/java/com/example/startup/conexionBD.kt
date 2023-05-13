@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FieldValue
@@ -124,7 +123,6 @@ class conexionBD {
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
                     val nombre = documentSnapshot.getString("nombre")
-                    Log.i("TAG", "conexion de nombre $nombre-----------")
                     textView.text = nombre
 
                     // Hacer algo con el nombre obtenido

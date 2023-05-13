@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewPW"
         android:layout_width="wrap_content"
-        android:layout_height="310dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="12dp">
 
         <RelativeLayout
@@ -27,7 +27,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="-9dp"
                 android:text="DETALLES DE PAGO"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/ncard"
@@ -47,8 +48,10 @@
                 android:layout_height="35dp"
                 android:layout_below="@+id/ncard"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/borde_redondo"
                 android:ems="10"
                 android:inputType="text" />
@@ -60,23 +63,176 @@
                 android:layout_below="@+id/card_number"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="-9dp"
                 android:text="Nombre"
                 android:textSize="14dp" />
 
+            <EditText
+                android:id="@+id/name_person"
+                android:layout_width="190dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/nametext"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/borde_redondo"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/cvvtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_person"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="-9dp"
+                android:layout_toEndOf="@+id/year"
+                android:text="CVV"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/cvv"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/cvvtext"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/year"
+                android:background="@drawable/borde_redondo"
+                android:ems="10"
+                android:inputType="text" />
 
 
+            <TextView
+                android:id="@+id/exptext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_person"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="-9dp"
+                android:text="Expiración"
+                android:textSize="14dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/mestext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exptext"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="-9dp"
+                android:text="Mes"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/mes"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/exptext"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/mestext"
+                android:background="@drawable/borde_redondo"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/yeartext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exptext"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="-9dp"
+                android:layout_toEndOf="@+id/mes"
+                android:text="Año"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/year"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/exptext"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@+id/yeartext"
+                android:background="@drawable/borde_redondo"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/correotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mes"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="-9dp"
+                android:text="Correo electrónico"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
 
+            <EditText
+                android:id="@+id/correo"
+                android:layout_width="170dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/correotext"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/borde_redondo"
+                android:ems="10"
+                android:inputType="text" />
 
+            <CheckBox
+                android:id="@+id/checkDebito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/correo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
 
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/correo"
+                android:text="Débito" />
 
+            <CheckBox
+                android:id="@+id/CheckCredito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crédito"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/checkDebito"
+                android:layout_below="@id/correo"/>
 
-
-
-
-
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/correo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/CheckCredito"
+                android:text="Pagar" />
 
         </RelativeLayout>
 

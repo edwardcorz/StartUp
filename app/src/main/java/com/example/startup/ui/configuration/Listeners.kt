@@ -143,7 +143,7 @@ open class Listeners : Fragment() {
                     myDialog.dismiss()
                     var conexion = conexionBD()
 
-                    conexion.conexionNombre(root.findViewById(R.id.nombreConfiguration))
+                    conexion.conexionNombre(root.findViewById(R.id.nombre_banner))
                     // El nombre se actualizó correctamente
                 }
                 .addOnFailureListener { exception ->

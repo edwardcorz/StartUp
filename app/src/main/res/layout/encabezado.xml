@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="@+id/nombre_banner"
             app:layout_constraintVertical_bias="0.576"
             app:shapeAppearanceOverlay="@style/circleImageView"
-            app:srcCompat="@drawable/queen" />
+            />
 
         <TextView
             android:id="@+id/nombre_banner"

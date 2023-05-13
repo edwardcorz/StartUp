@@ -70,6 +70,7 @@ class HomeFragment : Fragment() {
         var textView = root.findViewById<TextView>(R.id.nombre_banner)
 
         conexion.conexionNombre(textView)
+        conexion.cargarFoto(requireContext(),root)
 
         chart.axisLeft.isEnabled = false
         chart.setVisibleXRangeMaximum(8F)

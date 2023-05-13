@@ -70,7 +70,6 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, move to the next activity i.e. MainActivity
 
                     // ------------------- guardar datos -----------
 
@@ -87,9 +86,12 @@ class RegisterActivity : AppCompatActivity() {
                         )
                         userDocumentRef.set(userData)
                             .addOnSuccessListener {
-                                // Los datos se guardaron correctamente en Firestore
+                                Toast.makeText(this, "Los datos se guardaron correctamente", Toast.LENGTH_SHORT).show()
+
                             }.addOnFailureListener { e ->
-                                // Error al guardar los datos en Firestore. Maneja el error apropiadamente.
+                                Toast.makeText(this, "Los datos no se guardaron correctamente", Toast.LENGTH_SHORT).show()
+
+
                             }
                         //---------------
 
@@ -120,7 +122,6 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT).show()
 
                 } else {
-                    // If sign in fails, display a message to the user.
 
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()

@@ -9,7 +9,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
 open class Listeners : Fragment() {
-
+    private val conexion = conexionBD()
     fun dialog1Listener(btn: Button) {
         btn.setOnClickListener {
             val inflater  = LayoutInflater.from(requireActivity())
@@ -123,9 +125,78 @@ open class Listeners : Fragment() {
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myDialog.show()
 
+            validarCheckBox(dialogView)
+
+            pagarListener(dialogView, myDialog)
 
         }
     }
+
+    fun validarCheckBox(dialogView: View){
+        val creditoCheck = dialogView.findViewById<CheckBox>(R.id.checkCredito)
+        val debitoCheck = dialogView.findViewById<CheckBox>(R.id.checkDebito)
+
+        creditoCheck.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                debitoCheck.isChecked = false
+            }
+        }
+
+        debitoCheck.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                creditoCheck.isChecked = false
+            }
+        }
+    }
+
+    fun pagarListener(root: View, myDialog : Dialog){
+        val pagar = root.findViewById<Button>(R.id.pagar)
+        pagar.setOnClickListener{
+            validarTipoTarjeta(root, myDialog)
+        }
+    }
+    fun validarTipoTarjeta(dialogView: View, myDialog: Dialog){
+        val creditoCheck = dialogView.findViewById<CheckBox>(R.id.checkCredito)
+        val debitoCheck = dialogView.findViewById<CheckBox>(R.id.checkDebito)
+        if (!creditoCheck.isChecked and !debitoCheck.isChecked){
+            Toast.makeText(context, "Seleccione al menos un tipo de tarjeta", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            if (creditoCheck.isChecked) {
+                val credito = "credito"
+                cargarBD(credito,dialogView)
+
+            }
+            else{
+                val credito = "debito"
+                cargarBD(credito,dialogView)
+            }
+        }
+
+        myDialog.dismiss()
+    }
+
+    fun cargarBD(tipo:String,dialogView: View) {
+        val nombreTarjeta =
+            dialogView.findViewById<EditText>(R.id.name_person).text.toString()
+        val numeroTarjeta =
+            dialogView.findViewById<EditText>(R.id.card_number).text.toString()
+        val mesTarjeta = dialogView.findViewById<EditText>(R.id.mes).text.toString()
+        val añoTarjeta = dialogView.findViewById<EditText>(R.id.year).text.toString()
+        val cvvNumber = dialogView.findViewById<EditText>(R.id.cvv).text.toString()
+        val correo = dialogView.findViewById<EditText>(R.id.correo).text.toString()
+        conexion.guardarPagos(requireContext(),
+            nombreTarjeta,
+            numeroTarjeta,
+            mesTarjeta,
+            añoTarjeta,
+            cvvNumber,
+            tipo,
+            correo
+        )
+    }
+
+
 
 
 
@@ -164,7 +235,8 @@ open class Listeners : Fragment() {
 
     }
 
-    fun dialogPhotoListener(imageView: ShapeableImageView, root: View) {
+    fun dialogPhotoListener(imageView: ImageView, root: View) {
+
         imageView.setOnClickListener {
             val inflater  = LayoutInflater.from(requireActivity())
             val dialogView = inflater.inflate(R.layout.dialog_photo, null)
@@ -172,15 +244,16 @@ open class Listeners : Fragment() {
             myDialog.setContentView(dialogView)
             myDialog.setCancelable(true)
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
+            conexion.cargarFoto(requireContext(), dialogView)
             myDialog.show()
-            editarButtom(dialogView)
-
+            editarButtom(dialogView, myDialog)
+            volverListener(dialogView, myDialog)
         }
     }
-    fun editarButtom(dialogView : View){
+    fun editarButtom(dialogView : View, myDialog: Dialog){
         val subir = dialogView.findViewById<Button>(R.id.editar)
         subir.setOnClickListener{
+            myDialog.dismiss()
             editarListener.launch("image/*")
         }
     }

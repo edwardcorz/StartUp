@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.example.startup.R
 import com.example.startup.conexionBD
@@ -35,11 +36,17 @@ class PaymentFragment : Listeners() {
 
 
         conexion.conexionNombre(textView)
+        conexion.cargarFoto(requireContext(),root)
 
 
 
         var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
         dialogPayListener(buttonPagar, root)
+
+
+
+        //pagarListener(root)
+        //conexion.guardarPagos()
 
         return root
 

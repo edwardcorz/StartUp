@@ -9,6 +9,7 @@ import com.example.startup.R
 import com.example.startup.databinding.FragmentConfigurationBinding
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.startup.conexionBD
 
@@ -31,7 +32,6 @@ class   ConfigurationFragment : Listeners(){
         _binding = FragmentConfigurationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         val btn = binding.btn
         dialog1Listener(btn)
 
@@ -41,16 +41,17 @@ class   ConfigurationFragment : Listeners(){
         val editBtn = binding.guardarNombre
         dialog3Listener(editBtn, root)
 
-
+        //val aux = root.findViewById<ImageView>(R.id.imageView)
         val imageView = binding.encabezado.imageView // Reemplace 'btnOpenDialog' con el ID de su botón en el diseño
         dialogPhotoListener(imageView, root)
 
 
         var textView = root.findViewById<TextView>(R.id.nombre_banner)
 
+        var foto = root.findViewById<ImageView>(R.id.imageView)
         conexion.conexionNombre(textView)
+        conexion.cargarFoto(requireContext(), root)
 
-        conexion.cargarFoto(root, requireContext())
         return root
     }
 

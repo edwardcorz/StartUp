@@ -9,6 +9,7 @@ import android.widget.CalendarView
 import com.example.startup.R
 import android.util.Log
 import android.widget.TextView
+import com.example.startup.conexionBD
 import com.example.startup.databinding.FragmentCalendarBinding
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
@@ -17,7 +18,7 @@ import java.util.Locale
 
 
 class CalendarFragment : Fragment() {
-
+    private val conexion = conexionBD()
     private var _binding: FragmentCalendarBinding? = null
 
     // This property is only valid between onCreateView and
@@ -32,6 +33,12 @@ class CalendarFragment : Fragment() {
 
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        // Mostrar nombre del usuario
+
+        var textView = root.findViewById<TextView>(R.id.nombre_banner)
+
+        conexion.conexionNombre(textView)
 
         val calendarView = root.findViewById<CalendarView>(R.id.calendarView)
 

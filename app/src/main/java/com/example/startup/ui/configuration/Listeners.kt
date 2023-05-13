@@ -174,8 +174,8 @@ open class Listeners : Fragment() {
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             myDialog.show()
-            editarButtom(dialogView)
 
+            editarButtom(dialogView)
         }
     }
     fun editarButtom(dialogView : View){

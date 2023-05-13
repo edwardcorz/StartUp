@@ -1,6 +1,7 @@
 package com.example.startup.ui.configuration
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -358,16 +359,37 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun agendarClase(buttonAgendar: Button, fecha:String){
+    fun agendarClase(contexto:Context,buttonAgendar: Button, fecha:String){
 
         buttonAgendar.setOnClickListener{
-            Log.i("TAG", "Clase agendad para el dia $fecha")
-            conexion.guardarClase(requireContext(),fecha)
-            //conexion.onButtonClick(requireContext(),fecha)
-            buttonAgendar.setText("Cancelar")
-            buttonAgendar.setBackgroundColor(Color.RED)
+            conexion.verificarFechaAgendada(contexto, fecha) { agendada ->
+                if (agendada) {
+                    conexion.eliminarFechaAgendada(contexto, fecha)
+                    //conexion.cambiarBoton(contexto,fecha, buttonAgendar)
+                } else {
+                    conexion.guardarClase(contexto, fecha)
+
+                }
+            }
+
+
+            //if  (conexion.verificarFechaAgendada(contexto, fecha, buttonAgendar)){
+            //conexion.eliminarFechaAgendada(contexto, fecha)
+                //conexion.eliminarFechaAgendada(contexto, fecha)
+                /*
+                Log.i("TAG", "Clase agendad para el dia $fecha")
+                conexion.guardarClase(requireContext(),fecha)
+                //conexion.onButtonClick(requireContext(),fecha)
+                buttonAgendar.setText("Cancelar")
+                buttonAgendar.setBackgroundColor(Color.RED)
+                */
+
+            //}
+
 
             //conexion.eliminarFechaAgendada(requireContext(),fecha)
+            conexion.cambiarBoton(contexto,fecha, buttonAgendar)
+
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.startup
 
 import android.content.Context
 import android.graphics.Color
+import android.text.BoringLayout
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -136,16 +137,7 @@ class conexionBD {
             }
     }
 
-    var agenda = false
-    fun onButtonClick(contexto: Context, fecha: String){
-        if (agenda){
-            eliminarFechaAgendada(contexto, fecha)
-        }else{
-            guardarClase(contexto, fecha)
 
-        }
-
-    }
     fun guardarClase(contexto: Context, fecha: String) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
@@ -196,7 +188,7 @@ class conexionBD {
     }
 
 
-    fun verificarFechaAgendada(contexto: Context, fecha: String, buttonAgendar:Button) {
+    fun verificarFechaAgendada(contexto: Context, fecha: String, callback: (Boolean) -> Unit) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
 
@@ -211,23 +203,31 @@ class conexionBD {
                     if (userData != null) {
                         // Verificar si la fecha está agendada
                         val agendada = userData.containsKey(fecha) && userData[fecha] == "Agendada"
-
-                        if (agendada) {
-                            Toast.makeText(contexto, "La fecha está agendada", Toast.LENGTH_SHORT).show()
-                            buttonAgendar.setText("Cancelar")
-                            buttonAgendar.setBackgroundColor(Color.RED)
-                        } else {
-                            Toast.makeText(contexto, "La fecha no está agendada", Toast.LENGTH_SHORT).show()
-                            buttonAgendar.setText("Agendar")
-                            buttonAgendar.setBackgroundColor(Color.BLUE)
-
-
-                        }
+                        callback(agendada)
+                    } else {
+                        callback(false)
                     }
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error al obtener los datos", Toast.LENGTH_SHORT).show()
+                    callback(false)
                 }
+        } else {
+            callback(false)
+        }
+    }
+
+
+
+    fun cambiarBoton(contexto: Context, fecha: String, buttonAgendar: Button) {
+        verificarFechaAgendada(contexto, fecha) { agendada ->
+            if (agendada) {
+                buttonAgendar.setText("Cancelar")
+                buttonAgendar.setBackgroundColor(Color.RED)
+            } else {
+                buttonAgendar.setText("Agendar")
+                buttonAgendar.setBackgroundColor(Color.BLUE)
+            }
         }
     }
 

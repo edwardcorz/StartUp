@@ -50,10 +50,10 @@ class conexionBD {
             )
             userDocumentRef.set(userData)
                 .addOnSuccessListener {
-                    Toast.makeText(contexto, "Los datos se guardaron correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(contexto, "Pago hecho exitosamente!", Toast.LENGTH_SHORT).show()
 
                 }.addOnFailureListener { e ->
-                    Toast.makeText(contexto, "Los datos no se guardaron correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
 
 
                 }

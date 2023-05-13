@@ -155,7 +155,7 @@ class conexionBD {
                             .addOnSuccessListener {
                                 Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
                                 buttonAgendar.setText("Cancelar")
-                                buttonAgendar.setBackgroundColor(Color.RED)
+                                buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
@@ -180,7 +180,7 @@ class conexionBD {
                 .addOnSuccessListener {
                     Toast.makeText(contexto, "Fecha eliminada exitosamente", Toast.LENGTH_SHORT).show()
                     buttonAgendar.setText("Agendar")
-                    buttonAgendar.setBackgroundColor(Color.BLUE)
+                    buttonAgendar.setBackgroundColor(Color.rgb(36, 73, 95))
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error al eliminar la fecha", Toast.LENGTH_SHORT).show()

@@ -122,7 +122,6 @@ class conexionBD {
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
                     val nombre = documentSnapshot.getString("nombre")
-                    Log.i("TAG", "conexion de nombre $nombre-----------")
                     textView.text = nombre
 
                     // Hacer algo con el nombre obtenido
@@ -219,7 +218,6 @@ class conexionBD {
                             Toast.makeText(contexto, "La fecha no está agendada", Toast.LENGTH_SHORT).show()
                             buttonAgendar.setText("Agendar")
                             buttonAgendar.setBackgroundColor(Color.BLUE)
-
 
                         }
                     }

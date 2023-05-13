@@ -120,7 +120,6 @@ open class Listeners : Fragment() {
 
         button_pagar.setOnClickListener {
             ButtonSelected = button_pagar.id
-            Log.i("TAG", "asdasd $ButtonSelected")
             val inflater  = LayoutInflater.from(requireActivity())
             val dialogView = inflater.inflate(R.layout.dialog_payment, null)
             val myDialog = Dialog(requireContext())

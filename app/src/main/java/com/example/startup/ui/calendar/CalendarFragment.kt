@@ -68,10 +68,6 @@ class CalendarFragment : Listeners() {
 
         cargarDatos(diaAux , root)
 
-        val agendar = root.findViewById<Button>(R.id.agendar_clase)
-        agendarClase()
-
-
         calendarView.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
 
             calendarInstance.set(year, month, dayOfMonth)
@@ -84,6 +80,10 @@ class CalendarFragment : Listeners() {
             val dateFormat2 = SimpleDateFormat("EEEE", Locale("es", "ES"))
             val dayOfWeekString = dateFormat2.format(calendarInstance.time)
             cargarDatos(dayOfWeekString , root)
+
+            val agendar = root.findViewById<Button>(R.id.agendar_clase)
+            agendarClase(agendar, fechaSeleccionada)
+            conexion.verificarFechaAgendada(requireContext(),fechaSeleccionada, agendar)
 
         }
         return root

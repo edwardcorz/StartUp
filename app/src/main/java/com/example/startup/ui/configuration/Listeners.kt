@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.startup.LoginActivity
 import com.example.startup.MainActivity
@@ -357,7 +358,16 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun agendarClase(){
+    fun agendarClase(buttonAgendar: Button, fecha:String){
 
+        buttonAgendar.setOnClickListener{
+            Log.i("TAG", "Clase agendad para el dia $fecha")
+
+            conexion.onButtonClick(requireContext(),fecha)
+            buttonAgendar.setText("Cancelar")
+            buttonAgendar.setBackgroundColor(Color.RED)
+
+            //conexion.eliminarFechaAgendada(requireContext(),fecha)
+        }
     }
 }

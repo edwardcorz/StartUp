@@ -1,8 +1,10 @@
 package com.example.startup
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -10,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class conexionBD {
@@ -131,7 +134,101 @@ class conexionBD {
             .addOnFailureListener { exception ->
                 // Manejar el error de lectura del documento
             }
+    }
 
+    var agenda = false
+    fun onButtonClick(contexto: Context, fecha: String){
+        if (agenda){
+            eliminarFechaAgendada(contexto, fecha)
+        }else{
+            guardarClase(contexto, fecha)
+
+        }
 
     }
+    fun guardarClase(contexto: Context, fecha: String) {
+        val currentUser = auth.currentUser
+        val db = FirebaseFirestore.getInstance()
+
+        if (currentUser != null) {
+            val userDocumentRef = db.collection("usuariosAgenda").document(currentUser.uid)
+
+            userDocumentRef.get()
+                .addOnSuccessListener { documentSnapshot ->
+                    // Obtener los datos existentes del documento
+                    val userData = documentSnapshot.data
+
+                    if (userData != null) {
+                        // Agregar la nueva fecha al campo existente
+                        userData[fecha] = "Agendada"
+
+                        userDocumentRef.set(userData)
+                            .addOnSuccessListener {
+                                Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(contexto, "Error al obtener los datos", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
+
+    fun eliminarFechaAgendada(contexto: Context, fecha: String) {
+        val currentUser = auth.currentUser
+        val db = FirebaseFirestore.getInstance()
+
+        if (currentUser != null) {
+            val userDocumentRef = db.collection("usuariosAgenda").document(currentUser.uid)
+
+            userDocumentRef.update(fecha, FieldValue.delete())
+                .addOnSuccessListener {
+                    Toast.makeText(contexto, "Fecha eliminada exitosamente", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(contexto, "Error al eliminar la fecha", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
+
+    fun verificarFechaAgendada(contexto: Context, fecha: String, buttonAgendar:Button) {
+        val currentUser = auth.currentUser
+        val db = FirebaseFirestore.getInstance()
+
+        if (currentUser != null) {
+            val userDocumentRef = db.collection("usuariosAgenda").document(currentUser.uid)
+
+            userDocumentRef.get()
+                .addOnSuccessListener { documentSnapshot ->
+                    // Obtener los datos existentes del documento
+                    val userData = documentSnapshot.data
+
+                    if (userData != null) {
+                        // Verificar si la fecha está agendada
+                        val agendada = userData.containsKey(fecha) && userData[fecha] == "Agendada"
+
+                        if (agendada) {
+                            Toast.makeText(contexto, "La fecha está agendada", Toast.LENGTH_SHORT).show()
+                            buttonAgendar.setText("Cancelar")
+                            buttonAgendar.setBackgroundColor(Color.RED)
+                        } else {
+                            Toast.makeText(contexto, "La fecha no está agendada", Toast.LENGTH_SHORT).show()
+                            buttonAgendar.setText("Agendar")
+                            buttonAgendar.setBackgroundColor(Color.BLUE)
+
+
+                        }
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(contexto, "Error al obtener los datos", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
 }

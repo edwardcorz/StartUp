@@ -118,12 +118,12 @@ class RegisterActivity : AppCompatActivity() {
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
 
-                    Toast.makeText(baseContext, "Exitoso",
+                    Toast.makeText(baseContext, "Bienvenido",
                         Toast.LENGTH_SHORT).show()
 
                 } else {
 
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Error de autenticación.",
                         Toast.LENGTH_SHORT).show()
 
                 }

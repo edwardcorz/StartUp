@@ -270,11 +270,11 @@ open class Listeners : Fragment() {
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             conexion.cargarFoto(requireContext(), dialogView)
             myDialog.show()
-            editarButtom(dialogView, myDialog,root)
+            editarButtom(dialogView, myDialog,root,imageView)
             volverListener(dialogView, myDialog)
         }
     }
-    fun editarButtom(dialogView : View, myDialog: Dialog, root: View){
+    fun editarButtom(dialogView : View, myDialog: Dialog, root: View, imageView: ImageView){
         val subir = dialogView.findViewById<Button>(R.id.editar)
         subir.setOnClickListener{
             myDialog.dismiss()

@@ -104,76 +104,6 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-
-
-
-    <!-- <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/constraintLayout2"
-      android:layout_width="413dp"
-      android:layout_height="176dp"
-      android:layout_marginEnd="8dp"
-      android:background="@drawable/encabezado"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-
-
-      <com.google.android.material.imageview.ShapeableImageView
-          android:id="@+id/imageView2"
-          android:layout_width="118dp"
-          android:layout_height="118dp"
-          app:layout_constraintBottom_toBottomOf="@+id/imageView"
-          app:layout_constraintEnd_toEndOf="@+id/imageView"
-          app:layout_constraintHorizontal_bias="0.468"
-          app:layout_constraintStart_toStartOf="@+id/imageView"
-          app:layout_constraintTop_toTopOf="@+id/imageView"
-          app:layout_constraintVertical_bias="0.0"
-          app:srcCompat="@drawable/circle" />
-
-
-   <com.google.android.material.imageview.ShapeableImageView
-          android:id="@+id/imageView"
-          android:layout_width="115dp"
-          android:layout_height="115dp"
-          android:layout_marginStart="45dp"
-          android:scaleType="centerCrop"
-          app:layout_constraintBottom_toBottomOf="@+id/textView2"
-          app:layout_constraintEnd_toStartOf="@+id/nombreConfiguration"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="@+id/nombreConfiguration"
-          app:layout_constraintVertical_bias="0.576"
-          app:shapeAppearanceOverlay="@style/circleImageView"
-          app:srcCompat="@drawable/queen" />
-
-      <TextView
-          android:id="@+id/nombreConfiguration"
-          android:layout_width="143dp"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="188dp"
-          android:layout_marginTop="80dp"
-          android:fontFamily="@font/jost_bold"
-          android:textColor="@color/black"
-          android:textSize="24sp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
-
-      <TextView
-          android:id="@+id/textView2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="24dp"
-          android:fontFamily="@font/jost_medium"
-          android:text="@string/basico"
-          android:textColor="@color/black"
-          android:textSize="16sp"
-          android:textStyle="bold"
-          app:layout_constraintStart_toEndOf="@+id/imageView"
-          app:layout_constraintTop_toBottomOf="@+id/nombreConfiguration" />
-
-
-
-  </androidx.constraintlayout.widget.ConstraintLayout>-->
     <TextView
         android:id="@+id/guardarNombre"
         android:layout_width="25dp"
@@ -190,4 +120,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+       
 </androidx.constraintlayout.widget.ConstraintLayout>

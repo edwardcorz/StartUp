@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.example.startup.R
 import com.example.startup.conexionBD
 import com.example.startup.databinding.FragmentPaymentBinding
-import com.stripe.android.Stripe
+import com.example.startup.ui.configuration.Listeners
 
 
-class PaymentFragment : Fragment() {
+class PaymentFragment : Listeners() {
 
     private val conexion = conexionBD()
     private var _binding: FragmentPaymentBinding? = null
@@ -28,18 +27,22 @@ class PaymentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val stripe = Stripe(requireContext(), "pk_test_51N4ntfFMwr78vVxVjQ0xXvsz1tDzqAsWlT3TpxRdkhBq1zL7ryrh767kO9xbqKecVLqd8fOn7zRiAaRL6fkmciWV00R5Wh852w")
 
         _binding = FragmentPaymentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         var textView=root.findViewById<TextView>(R.id.nombre_banner)
 
+
         conexion.conexionNombre(textView)
+
+
+
+        var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
+        dialogPayListener(buttonPagar, root)
 
         return root
 
-        var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
     }
 
     override fun onDestroyView() {

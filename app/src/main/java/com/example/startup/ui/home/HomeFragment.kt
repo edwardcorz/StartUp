@@ -28,10 +28,10 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        val baseDatos = conexionBD()
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        //baseDatos.cargarFoto(root, requireContext())
         // Crea el gráfico de barras
         val chart = root.findViewById<BarChart>(R.id.chart)
 

@@ -117,7 +117,7 @@ open class Listeners : Fragment() {
         }
     }
     var ButtonSelected :Int? = null
-    fun dialogPayListener(button_pagar: Button, root : View) {
+    fun dialogPayListener(button_pagar: Button, root : View, texto:TextView) {
 
         button_pagar.setOnClickListener {
             ButtonSelected = button_pagar.id
@@ -131,7 +131,7 @@ open class Listeners : Fragment() {
 
 
             validarCheckBox(dialogView)
-            pagarListener(dialogView, myDialog)
+            pagarListener(dialogView, myDialog,texto)
 
         }
     }
@@ -153,13 +153,13 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun pagarListener(root: View, myDialog : Dialog, ){
+    fun pagarListener(root: View, myDialog : Dialog, texto:TextView){
         val pagar = root.findViewById<Button>(R.id.pagar)
         pagar.setOnClickListener{
-            validarCampos(root,myDialog)
+            validarCampos(root,myDialog,texto)
         }
     }
-    fun validarTipoTarjeta(dialogView: View, myDialog: Dialog){
+    fun validarTipoTarjeta(dialogView: View, myDialog: Dialog,texto:TextView){
         val creditoCheck = dialogView.findViewById<CheckBox>(R.id.checkCredito)
         val debitoCheck = dialogView.findViewById<CheckBox>(R.id.checkDebito)
         if (!creditoCheck.isChecked and !debitoCheck.isChecked){
@@ -168,13 +168,13 @@ open class Listeners : Fragment() {
         else{
             if (creditoCheck.isChecked) {
                 val credito = "credito"
-                cargarBD(credito,dialogView)
+                cargarBD(credito,dialogView,texto)
                 myDialog.dismiss()
 
             }
             else{
                 val credito = "debito"
-                cargarBD(credito,dialogView)
+                cargarBD(credito,dialogView,texto)
                 myDialog.dismiss()
             }
         }
@@ -182,7 +182,7 @@ open class Listeners : Fragment() {
 
     }
 
-    fun cargarBD(tipo:String,dialogView: View) {
+    fun cargarBD(tipo:String,dialogView: View, texto:TextView) {
         val nombreTarjeta =
             dialogView.findViewById<EditText>(R.id.name_person).text.toString()
         val numeroTarjeta =
@@ -217,7 +217,7 @@ open class Listeners : Fragment() {
             cvvNumber,
             tipo,
             correo,
-            plan
+            plan,texto
         )
     }
 
@@ -334,7 +334,7 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun validarCampos(dialogView: View,myDialog: Dialog){
+    fun validarCampos(dialogView: View,myDialog: Dialog,texto:TextView){
         val nombreTarjeta =
             dialogView.findViewById<EditText>(R.id.name_person).text
         val numeroTarjeta =
@@ -353,7 +353,7 @@ open class Listeners : Fragment() {
                     .show()
             }
             else{
-                validarTipoTarjeta(dialogView, myDialog)
+                validarTipoTarjeta(dialogView, myDialog,texto)
             }
         }
     }
@@ -363,10 +363,10 @@ open class Listeners : Fragment() {
         buttonAgendar.setOnClickListener{
             conexion.verificarFechaAgendada(contexto, fecha) { agendada ->
                 if (agendada) {
-                    conexion.eliminarFechaAgendada(contexto, fecha)
+                    conexion.eliminarFechaAgendada(contexto, fecha,buttonAgendar)
                     //conexion.cambiarBoton(contexto,fecha, buttonAgendar)
                 } else {
-                    conexion.guardarClase(contexto, fecha)
+                    conexion.guardarClase(contexto, fecha,buttonAgendar)
 
                 }
             }

@@ -84,7 +84,6 @@ class CalendarFragment : Listeners() {
             val agendar = root.findViewById<Button>(R.id.agendar_clase)
             agendarClase(requireContext(),agendar, fechaSeleccionada)
             conexion.cambiarBoton(requireContext(),fechaSeleccionada, agendar)
-            //conexion.verificarFechaAgendada(requireContext(),fechaSeleccionada, agendar)
 
         }
         return root

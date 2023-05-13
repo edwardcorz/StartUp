@@ -117,7 +117,7 @@ open class Listeners : Fragment() {
         }
     }
     var ButtonSelected :Int? = null
-    fun dialogPayListener(button_pagar: Button, root : View, texto:TextView) {
+    fun dialogPayListener(button_pagar: Button, root : View, texto:TextView, textViewMiPlan:TextView) {
 
         button_pagar.setOnClickListener {
             ButtonSelected = button_pagar.id
@@ -131,7 +131,7 @@ open class Listeners : Fragment() {
 
 
             validarCheckBox(dialogView)
-            pagarListener(dialogView, root , myDialog,texto)
+            pagarListener(dialogView, root , myDialog,texto, textViewMiPlan)
 
         }
     }
@@ -153,13 +153,13 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun pagarListener(dialogView: View, root : View, myDialog : Dialog, texto:TextView){
+    fun pagarListener(dialogView: View, root : View, myDialog : Dialog, texto:TextView, textViewMiPlan:TextView){
         val pagar = dialogView.findViewById<Button>(R.id.pagar)
         pagar.setOnClickListener{
-            validarCampos(dialogView, root, myDialog,texto)
+            validarCampos(dialogView, root, myDialog,texto, textViewMiPlan)
         }
     }
-    fun validarTipoTarjeta(dialogView: View, root : View, myDialog: Dialog,texto:TextView){
+    fun validarTipoTarjeta(dialogView: View, root : View, myDialog: Dialog,texto:TextView,textViewMiPlan:TextView){
         val creditoCheck = dialogView.findViewById<CheckBox>(R.id.checkCredito)
         val debitoCheck = dialogView.findViewById<CheckBox>(R.id.checkDebito)
         if (!creditoCheck.isChecked and !debitoCheck.isChecked){
@@ -168,13 +168,13 @@ open class Listeners : Fragment() {
         else{
             if (creditoCheck.isChecked) {
                 val credito = "credito"
-                cargarBD(credito,dialogView, root, texto)
+                cargarBD(credito,dialogView, root, texto,textViewMiPlan)
                 myDialog.dismiss()
 
             }
             else{
                 val credito = "debito"
-                cargarBD(credito,dialogView,root, texto)
+                cargarBD(credito,dialogView,root, texto, textViewMiPlan)
                 myDialog.dismiss()
             }
         }
@@ -182,7 +182,7 @@ open class Listeners : Fragment() {
 
     }
 
-    fun cargarBD(tipo:String,dialogView: View, root : View,texto:TextView) {
+    fun cargarBD(tipo:String,dialogView: View, root : View,texto:TextView, textViewMiPlan:TextView) {
         val nombreTarjeta =
             dialogView.findViewById<EditText>(R.id.name_person).text.toString()
         val numeroTarjeta =
@@ -217,7 +217,7 @@ open class Listeners : Fragment() {
             cvvNumber,
             tipo,
             correo,
-            plan,texto, root
+            plan,texto, textViewMiPlan, root
         )
     }
 
@@ -334,7 +334,7 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun validarCampos(dialogView: View, root : View,myDialog: Dialog,texto:TextView){
+    fun validarCampos(dialogView: View, root : View,myDialog: Dialog,texto:TextView, textViewMiPlan:TextView){
         val nombreTarjeta =
             dialogView.findViewById<EditText>(R.id.name_person).text
         val numeroTarjeta =
@@ -352,12 +352,11 @@ open class Listeners : Fragment() {
                     .show()
         }
         else{
-            validarTipoTarjeta(dialogView, root,  myDialog,texto)
+            validarTipoTarjeta(dialogView, root,  myDialog,texto, textViewMiPlan)
         }
     }
 
     fun agendarClase(contexto:Context,buttonAgendar: Button, fecha:String){
-
         buttonAgendar.setOnClickListener{
             conexion.verificarFechaAgendada(contexto, fecha) { agendada ->
                 if (agendada) {
@@ -369,22 +368,6 @@ open class Listeners : Fragment() {
                 }
             }
 
-
-            //if  (conexion.verificarFechaAgendada(contexto, fecha, buttonAgendar)){
-            //conexion.eliminarFechaAgendada(contexto, fecha)
-                //conexion.eliminarFechaAgendada(contexto, fecha)
-                /*
-                Log.i("TAG", "Clase agendad para el dia $fecha")
-                conexion.guardarClase(requireContext(),fecha)
-                //conexion.onButtonClick(requireContext(),fecha)
-                buttonAgendar.setText("Cancelar")
-                buttonAgendar.setBackgroundColor(Color.RED)
-                */
-
-            //}
-
-
-            //conexion.eliminarFechaAgendada(requireContext(),fecha)
             conexion.cambiarBoton(contexto,fecha, buttonAgendar)
 
         }

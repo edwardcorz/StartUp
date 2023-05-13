@@ -49,6 +49,8 @@ class   ConfigurationFragment : Listeners(){
         var textView = root.findViewById<TextView>(R.id.nombreConfiguration)
 
         conexion.conexionNombre(textView)
+
+        conexion.cargarFoto(root, requireContext())
         return root
     }
 

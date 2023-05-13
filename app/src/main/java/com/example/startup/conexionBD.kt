@@ -221,10 +221,10 @@ class conexionBD {
         verificarFechaAgendada(contexto, fecha) { agendada ->
             if (agendada) {
                 buttonAgendar.setText("Cancelar")
-                buttonAgendar.setBackgroundColor(Color.RED)
+                buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
             } else {
                 buttonAgendar.setText("Agendar")
-                buttonAgendar.setBackgroundColor(Color.BLUE)
+                buttonAgendar.setBackgroundColor(Color.rgb(36, 73, 95))
             }
         }
     }

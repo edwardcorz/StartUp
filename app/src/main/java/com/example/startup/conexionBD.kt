@@ -152,7 +152,7 @@ class conexionBD {
             }
     }
 
-    
+
     fun guardarClase(contexto: Context, fecha: String, buttonAgendar: Button) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
@@ -162,30 +162,43 @@ class conexionBD {
 
             userDocumentRef.get()
                 .addOnSuccessListener { documentSnapshot ->
-                    // Obtener los datos existentes del documento
-                    val userData = documentSnapshot.data
+                    if (documentSnapshot.exists()) {
+                        val userData = documentSnapshot.data
 
-                    if (userData != null) {
-                        // Agregar la nueva fecha al campo existente
-                        userData[fecha] = "Agendada"
+                        if (userData != null) {
+                            // Agregar la nueva fecha al campo existente
+                            userData[fecha] = "Agendada"
 
-                        userDocumentRef.set(userData)
+                            userDocumentRef.set(userData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
+                                    buttonAgendar.setText("Cancelar")
+                                    buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    } else {
+                        val newUserData = hashMapOf(
+                            fecha to "Agendada"
+                        )
+
+                        userDocumentRef.set(newUserData)
                             .addOnSuccessListener {
                                 Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
-                                buttonAgendar.setText("Cancelar")
-                                buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
                             }
                     }
-
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error al obtener los datos", Toast.LENGTH_SHORT).show()
                 }
         }
     }
+
 
 
     fun eliminarFechaAgendada(contexto: Context, fecha: String, buttonAgendar: Button) {

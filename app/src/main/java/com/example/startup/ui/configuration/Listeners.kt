@@ -362,8 +362,8 @@ open class Listeners : Fragment() {
 
         buttonAgendar.setOnClickListener{
             Log.i("TAG", "Clase agendad para el dia $fecha")
-
-            conexion.onButtonClick(requireContext(),fecha)
+            conexion.guardarClase(requireContext(),fecha)
+            //conexion.onButtonClick(requireContext(),fecha)
             buttonAgendar.setText("Cancelar")
             buttonAgendar.setBackgroundColor(Color.RED)
 

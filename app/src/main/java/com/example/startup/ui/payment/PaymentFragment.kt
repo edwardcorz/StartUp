@@ -33,15 +33,23 @@ class PaymentFragment : Listeners() {
         val root: View = binding.root
 
         var textView=root.findViewById<TextView>(R.id.nombre_banner)
+        var textViewPlan=root.findViewById<TextView>(R.id.plan)
 
 
         conexion.conexionNombre(textView)
+        conexion.extraerPlan(textViewPlan)
         conexion.cargarFoto(requireContext(),root)
 
 
 
         var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
         dialogPayListener(buttonPagar, root)
+
+        var buttonSemanal = root.findViewById<Button>(R.id.button_semanal)
+        dialogPayListener(buttonSemanal, root)
+
+        var buttonPersonalizado = root.findViewById<Button>(R.id.button_personalizado)
+        dialogPayListener(buttonPersonalizado, root)
 
 
 

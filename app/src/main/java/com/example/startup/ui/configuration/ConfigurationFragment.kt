@@ -46,9 +46,12 @@ class   ConfigurationFragment : Listeners(){
 
 
         var textView = root.findViewById<TextView>(R.id.nombre_banner)
+        var textViewPlan=root.findViewById<TextView>(R.id.plan)
+
 
         var foto = root.findViewById<ImageView>(R.id.imageView)
         conexion.conexionNombre(textView)
+        conexion.extraerPlan(textViewPlan)
         conexion.cargarFoto(requireContext(), root)
 
         return root

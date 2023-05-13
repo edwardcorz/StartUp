@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import android.widget.CalendarView
 import com.example.startup.R
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import com.example.startup.conexionBD
 import com.example.startup.databinding.FragmentCalendarBinding
+import com.example.startup.ui.configuration.Listeners
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 
-class CalendarFragment : Fragment() {
+class CalendarFragment : Listeners() {
     private val conexion = conexionBD()
     private var _binding: FragmentCalendarBinding? = null
 
@@ -37,17 +39,18 @@ class CalendarFragment : Fragment() {
         // Mostrar nombre del usuario
 
         var textView = root.findViewById<TextView>(R.id.nombre_banner)
+        var textViewPlan = root.findViewById<TextView>(R.id.plan)
+
 
         conexion.conexionNombre(textView)
-        conexion.cargarFoto(requireContext(),root)
+        conexion.extraerPlan(textViewPlan)
+        conexion.cargarFoto(requireContext(), root)
 
         val calendarView = root.findViewById<CalendarView>(R.id.calendarView)
 
         val calendarInstance = Calendar.getInstance()
 
         val defaultDateInMillis: Long = calendarView.date
-
-
 
         val calendar: Calendar = Calendar.getInstance().apply {
             timeInMillis = defaultDateInMillis
@@ -60,19 +63,14 @@ class CalendarFragment : Fragment() {
 
         root.findViewById<TextView>(R.id.fecha).setText(formattedDate.toString())
 
-
         val formato1 = SimpleDateFormat("EEEE", Locale("es", "ES"))
         val diaAux = formato1.format(calendarInstance.time)
-        Log.i("Flag", "$diaAux ----------------------")
 
-        val entrenamiento = "warm up"
-        conexion2(diaAux ,entrenamiento) { seriesSalida ->
-            root.findViewById<TextView>(R.id.seriesWarmUp).text = seriesSalida
-        }
-        val entrenamiento2 = "wod"
-        conexion2(diaAux ,entrenamiento2) { seriesSalida ->
-            root.findViewById<TextView>(R.id.seriesWod).text = seriesSalida
-        }
+        cargarDatos(diaAux , root)
+
+        val agendar = root.findViewById<Button>(R.id.agendar_clase)
+        agendarClase()
+
 
         calendarView.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
 
@@ -85,19 +83,21 @@ class CalendarFragment : Fragment() {
             // fecha para la BD
             val dateFormat2 = SimpleDateFormat("EEEE", Locale("es", "ES"))
             val dayOfWeekString = dateFormat2.format(calendarInstance.time)
+            cargarDatos(dayOfWeekString , root)
 
-            //conexion2(dayOfWeekString)
-
-            val entrenamiento = "warm up"
-            conexion2(dayOfWeekString ,entrenamiento) { seriesSalida ->
-                root.findViewById<TextView>(R.id.seriesWarmUp).text = seriesSalida
-            }
-            val entrenamiento2 = "wod"
-            conexion2(dayOfWeekString ,entrenamiento2) { seriesSalida ->
-                root.findViewById<TextView>(R.id.seriesWod).text = seriesSalida
-            }
         }
         return root
+    }
+
+    fun cargarDatos(dayOfWeekString:String, root:View){
+        val entrenamiento = "warm up"
+        conexion2(dayOfWeekString ,entrenamiento) { seriesSalida ->
+            root.findViewById<TextView>(R.id.seriesWarmUp).text = seriesSalida
+        }
+        val entrenamiento2 = "wod"
+        conexion2(dayOfWeekString ,entrenamiento2) { seriesSalida ->
+            root.findViewById<TextView>(R.id.seriesWod).text = seriesSalida
+        }
     }
 
     fun conexion2(dia: String, entrenamiento:String, callback: (String) -> Unit) {
@@ -117,28 +117,10 @@ class CalendarFragment : Fragment() {
                     }
                     callback(seriesWarmUp)
 
-
-
-
-                    /*
-                    val ejerciciosMap = dataSnapshot.value as Map<*, *>
-                    Log.i("TAG","Ejercicios para el día $dia:")
-                    for ((nombre, series) in ejerciciosMap ) {
-                        seriesWarmUp += series
-                        seriesWarmUp += "\n"
-                        Log.i("FLAG"," $nombre $series:")
-                    }
-                    callback(seriesWarmUp)
-
-                    //return (seriesSalida)
-                    //findViewById<TextView>(R.id.serie).setText("Este es un texto largo que se desea mostrar en un TextView. El texto puede tener muchas líneas y ser muy extenso. Para mostrar el texto completo, se puede utilizar el atributo android:maxLines=\"unlimited\" en el archivo XML del layout del TextView.")
-                    //root.findViewById<TextView>(R.id.serie).setText(seriesSalida)
-                    */
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Código que se ejecuta cuando ocurre un error al obtener los datos de Firebase
                 Log.i("TAG", "Error al leer los datos.")
             }
         })

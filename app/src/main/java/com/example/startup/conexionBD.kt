@@ -32,7 +32,21 @@ class conexionBD {
             }
     }
 
-    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String, inputMes: String, inputAño: String,inputCvv: String, inputTipo: String, inputCorre: String){
+
+    fun extraerPlan(textView : TextView){
+        val db = FirebaseFirestore.getInstance()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        val docRef = db.collection("usuariosPagos").document(userId!!)
+        docRef.get().addOnSuccessListener { document ->
+            val valorCampo = document.getString("plan")
+            textView.text = valorCampo
+        }.addOnFailureListener { exception ->
+            // Ocurrió un error al obtener el documento
+            Log.d("TAG", "Error al obtener el documento: $exception")
+        }
+
+    }
+    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String, inputMes: String, inputAño: String,inputCvv: String, inputTipo: String, inputCorre: String, inputPlan:String){
         val currentUser = auth.currentUser
 
         val db = FirebaseFirestore.getInstance()
@@ -46,7 +60,8 @@ class conexionBD {
                 "año" to inputCvv,
                 "cvv" to inputCvv,
                 "tipo" to inputTipo,
-                "correo" to inputCorre
+                "correo" to inputCorre,
+                "plan" to inputPlan
             )
             userDocumentRef.set(userData)
                 .addOnSuccessListener {

@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.startup.LoginActivity
+import com.example.startup.MainActivity
 import com.example.startup.R
 import com.example.startup.conexionBD
 import com.google.android.material.imageview.ShapeableImageView
@@ -113,10 +114,12 @@ open class Listeners : Fragment() {
             cambiarNombre(dialogView,myDialog, root)
         }
     }
-
+    var ButtonSelected :Int? = null
     fun dialogPayListener(button_pagar: Button, root : View) {
 
         button_pagar.setOnClickListener {
+            ButtonSelected = button_pagar.id
+            Log.i("TAG", "asdasd $ButtonSelected")
             val inflater  = LayoutInflater.from(requireActivity())
             val dialogView = inflater.inflate(R.layout.dialog_payment, null)
             val myDialog = Dialog(requireContext())
@@ -125,8 +128,8 @@ open class Listeners : Fragment() {
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myDialog.show()
 
-            validarCheckBox(dialogView)
 
+            validarCheckBox(dialogView)
             pagarListener(dialogView, myDialog)
 
         }
@@ -149,10 +152,10 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun pagarListener(root: View, myDialog : Dialog){
+    fun pagarListener(root: View, myDialog : Dialog, ){
         val pagar = root.findViewById<Button>(R.id.pagar)
         pagar.setOnClickListener{
-            validarTipoTarjeta(root, myDialog)
+            validarCampos(root,myDialog)
         }
     }
     fun validarTipoTarjeta(dialogView: View, myDialog: Dialog){
@@ -187,6 +190,24 @@ open class Listeners : Fragment() {
         val añoTarjeta = dialogView.findViewById<EditText>(R.id.year).text.toString()
         val cvvNumber = dialogView.findViewById<EditText>(R.id.cvv).text.toString()
         val correo = dialogView.findViewById<EditText>(R.id.correo).text.toString()
+        var plan = ""
+        Log.i("TAG", "plan $ButtonSelected")
+        if (ButtonSelected == 2131361906){
+            Log.i("TAG", "basico $ButtonSelected")
+
+            plan = "Plan básico"
+        }
+        if (ButtonSelected == 2131361909){
+            Log.i("TAG", "Semanal $ButtonSelected")
+
+            plan = "Plan Semanal"
+        }
+        if (ButtonSelected == 2131361907){
+            Log.i("TAG", "Personalizado $ButtonSelected")
+
+            plan = "Plan Personalizado"
+        }
+
         conexion.guardarPagos(requireContext(),
             nombreTarjeta,
             numeroTarjeta,
@@ -194,7 +215,8 @@ open class Listeners : Fragment() {
             añoTarjeta,
             cvvNumber,
             tipo,
-            correo
+            correo,
+            plan
         )
     }
 
@@ -238,7 +260,6 @@ open class Listeners : Fragment() {
     }
 
     fun dialogPhotoListener(imageView: ImageView, root: View) {
-
         imageView.setOnClickListener {
             val inflater  = LayoutInflater.from(requireActivity())
             val dialogView = inflater.inflate(R.layout.dialog_photo, null)
@@ -248,11 +269,11 @@ open class Listeners : Fragment() {
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             conexion.cargarFoto(requireContext(), dialogView)
             myDialog.show()
-            editarButtom(dialogView, myDialog)
+            editarButtom(dialogView, myDialog,root)
             volverListener(dialogView, myDialog)
         }
     }
-    fun editarButtom(dialogView : View, myDialog: Dialog){
+    fun editarButtom(dialogView : View, myDialog: Dialog, root: View){
         val subir = dialogView.findViewById<Button>(R.id.editar)
         subir.setOnClickListener{
             myDialog.dismiss()
@@ -285,13 +306,14 @@ open class Listeners : Fragment() {
                     val downloadUrl = uri.toString()
                     // Aquí puedes guardar la URL de descarga en la base de datos junto con los detalles del usuario
                     guardarURLFotoPerfil(downloadUrl)
+
+
                 }
             }
             .addOnFailureListener { exception ->
                 // Ocurrió un error al subir la imagen
                 // Puedes manejar el error según tus necesidades
             }
-
     }
 
     fun guardarURLFotoPerfil(downloadUrl: String){
@@ -309,5 +331,33 @@ open class Listeners : Fragment() {
                     // Ocurrió un error al guardar la URL de la foto de perfil
                 }
         }
+    }
+
+    fun validarCampos(dialogView: View,myDialog: Dialog){
+        val nombreTarjeta =
+            dialogView.findViewById<EditText>(R.id.name_person).text
+        val numeroTarjeta =
+            dialogView.findViewById<EditText>(R.id.card_number).text
+        val mesTarjeta = dialogView.findViewById<EditText>(R.id.mes).text
+        val añoTarjeta = dialogView.findViewById<EditText>(R.id.year).text
+        val cvvNumber = dialogView.findViewById<EditText>(R.id.cvv).text
+        val correo = dialogView.findViewById<EditText>(R.id.correo).text
+
+        val pagar = dialogView.findViewById<Button>(R.id.pagar)
+        pagar.setOnClickListener{
+            if (nombreTarjeta.isEmpty() || numeroTarjeta.isEmpty() || mesTarjeta.isEmpty()
+                || añoTarjeta.isEmpty() || cvvNumber.isEmpty() || correo.isEmpty()){
+
+                Toast.makeText(requireContext(), "LLena todos los campos", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            else{
+                validarTipoTarjeta(dialogView, myDialog)
+            }
+        }
+    }
+
+    fun agendarClase(){
+
     }
 }

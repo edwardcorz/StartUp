@@ -31,7 +31,7 @@
             android:layout_height="115dp"
             android:layout_marginStart="45dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/plan"
             app:layout_constraintEnd_toStartOf="@+id/nombre_banner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/nombre_banner"
@@ -52,12 +52,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/plan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:fontFamily="@font/jost_medium"
-            android:text="@string/basico"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"

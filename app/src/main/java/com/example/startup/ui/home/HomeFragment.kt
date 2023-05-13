@@ -68,8 +68,10 @@ class HomeFragment : Fragment() {
         // Mostrar nombre del usuario
 
         var textView = root.findViewById<TextView>(R.id.nombre_banner)
+        var textViewPlan=root.findViewById<TextView>(R.id.plan)
 
         conexion.conexionNombre(textView)
+        conexion.extraerPlan(textViewPlan)
         conexion.cargarFoto(requireContext(),root)
 
         chart.axisLeft.isEnabled = false

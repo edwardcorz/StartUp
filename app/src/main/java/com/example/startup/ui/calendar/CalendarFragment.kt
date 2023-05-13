@@ -103,7 +103,6 @@ class CalendarFragment : Listeners() {
     fun conexion2(dia: String, entrenamiento:String, callback: (String) -> Unit) {
 
         val mDatabase = FirebaseDatabase.getInstance().getReference(" Ejercicios/$dia")
-        var seriesWod = ""
         var seriesWarmUp = ""
         mDatabase.child(entrenamiento).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

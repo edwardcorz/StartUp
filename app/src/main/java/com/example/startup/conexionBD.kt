@@ -2,7 +2,6 @@ package com.example.startup
 
 import android.content.Context
 import android.graphics.Color
-import android.text.BoringLayout
 import android.util.Log
 import android.view.View
 import android.widget.Button

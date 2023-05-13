@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val baseDatos = conexionBD()
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         // Crea el gráfico de barras
@@ -47,8 +46,8 @@ class HomeFragment : Fragment() {
             BarEntry(9f, 2f)
         )
 
-        val dataSet = BarDataSet(entries, "Ejemplo de datos")
-        dataSet.color = Color.RED
+        val dataSet = BarDataSet(entries, "Resumen mensual")
+        dataSet.color = Color.rgb(120, 16, 2)
 
         val data = BarData(dataSet)
         data.barWidth = 0.3f

@@ -36,7 +36,7 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/miPlan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"

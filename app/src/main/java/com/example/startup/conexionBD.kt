@@ -48,7 +48,9 @@ class conexionBD {
         }
 
     }
-    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String, inputMes: String, inputAño: String,inputCvv: String, inputTipo: String, inputCorre: String, inputPlan:String, texto:TextView){
+    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String,
+                     inputMes: String, inputAño: String,inputCvv: String, inputTipo: String,
+                     inputCorre: String, inputPlan:String, texto:TextView, root : View,){
         val currentUser = auth.currentUser
 
         val db = FirebaseFirestore.getInstance()
@@ -59,7 +61,7 @@ class conexionBD {
                 "nombreTitular" to inputName,
                 "numeroTarjeta" to inputNumTarjeta,
                 "mes" to inputAño,
-                "año" to inputCvv,
+                "año" to inputMes,
                 "cvv" to inputCvv,
                 "tipo" to inputTipo,
                 "correo" to inputCorre,
@@ -69,6 +71,7 @@ class conexionBD {
                 .addOnSuccessListener {
                     Toast.makeText(contexto, "Pago hecho exitosamente!", Toast.LENGTH_SHORT).show()
                     extraerPlan(texto)
+                    root.findViewById<TextView>(R.id.miPlan).text = inputPlan
 
                 }.addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()

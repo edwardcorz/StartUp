@@ -112,6 +112,21 @@ open class Listeners : Fragment() {
         }
     }
 
+    fun dialogPayListener(button_pagar: Button, root : View) {
+
+        button_pagar.setOnClickListener {
+            val inflater  = LayoutInflater.from(requireActivity())
+            val dialogView = inflater.inflate(R.layout.dialog_payment, null)
+            val myDialog = Dialog(requireContext())
+            myDialog.setContentView(dialogView)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+
+
+        }
+    }
+
 
 
     fun cambiarNombre(dialogView : View , myDialog: Dialog, root:View){

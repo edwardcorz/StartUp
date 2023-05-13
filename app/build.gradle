@@ -83,6 +83,4 @@ dependencies {
     //CardsView
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    //Stripe payment method
-    implementation 'com.stripe:stripe-android:20.24.2'
 }

@@ -11,7 +11,8 @@
         android:id="@+id/cardViewPW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        app:cardCornerRadius="12dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -56,7 +57,7 @@
                     android:id="@+id/logOut"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="27dp"
                     android:letterSpacing="0.4"
                     android:layout_marginBottom="10dp"

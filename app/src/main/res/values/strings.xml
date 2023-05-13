@@ -28,6 +28,10 @@
     <string name="asistencia_tres_veces">Asistencia 3 veces por semana</string>
     <string name="pay">Pagar</string>
     <string name="more_plans">Más planes</string>
+    <string name="boton_agendar">Agendar</string>
+    <string name="titulo_rutina">Rutina del dia</string>
+
+
 
     <string name="title_home">Inicio</string>
     <string name="title_dashboard">Calendario</string>
@@ -45,7 +49,8 @@
     <string name="volver_button">volver</string>
     <string name="editar_button">Editar</string>
     <string name="close_sesion">Está seguro de cerrar la sesión?</string>
-    <string name="log_out">Log out</string>
+    <string name="log_out">Salir</string>
+
     <string name="resumen">Tu resumen de entreno</string>
     <string name="dias_asistidos">Cantidad de dias asistidos</string>
     <string name="rutina_label">Rutina del dia</string>

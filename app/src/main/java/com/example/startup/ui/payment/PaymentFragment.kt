@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.example.startup.R
 import com.example.startup.conexionBD
 import com.example.startup.databinding.FragmentPaymentBinding
@@ -32,7 +31,8 @@ class PaymentFragment : Listeners() {
         _binding = FragmentPaymentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView=root.findViewById<TextView>(R.id.nombrePayment)
+        var textView=root.findViewById<TextView>(R.id.nombre_banner)
+
 
         conexion.conexionNombre(textView)
 

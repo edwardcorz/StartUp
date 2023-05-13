@@ -1,14 +1,11 @@
 package com.example.startup.ui.configuration
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.startup.R
 import com.example.startup.databinding.FragmentConfigurationBinding
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.widget.TextView
 import com.example.startup.conexionBD
 

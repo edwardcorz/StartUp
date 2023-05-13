@@ -13,31 +13,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.calendar.CalendarFragment">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="413dp"
-        android:layout_height="176dp"
-        android:background="@drawable/encabezado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <include
+        layout="@layout/encabezado"
+        android:id="@+id/encabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="300dp"
             android:layout_height="47dp"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="190dp"
             app:cardCornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.407"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/encabezado">
 
             <RelativeLayout
-                android:layout_width="279dp"
+                android:layout_width="280dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -61,7 +56,6 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -82,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/rutina"

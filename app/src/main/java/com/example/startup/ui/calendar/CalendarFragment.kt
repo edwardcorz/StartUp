@@ -39,6 +39,7 @@ class CalendarFragment : Fragment() {
         var textView = root.findViewById<TextView>(R.id.nombre_banner)
 
         conexion.conexionNombre(textView)
+        conexion.cargarFoto(requireContext(),root)
 
         val calendarView = root.findViewById<CalendarView>(R.id.calendarView)
 
@@ -59,7 +60,6 @@ class CalendarFragment : Fragment() {
 
         root.findViewById<TextView>(R.id.fecha).setText(formattedDate.toString())
 
-        // TODO Mostrar la rutina del dia default
 
         val formato1 = SimpleDateFormat("EEEE", Locale("es", "ES"))
         val diaAux = formato1.format(calendarInstance.time)

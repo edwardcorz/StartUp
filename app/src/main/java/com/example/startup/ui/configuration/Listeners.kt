@@ -165,15 +165,17 @@ open class Listeners : Fragment() {
             if (creditoCheck.isChecked) {
                 val credito = "credito"
                 cargarBD(credito,dialogView)
+                myDialog.dismiss()
 
             }
             else{
                 val credito = "debito"
                 cargarBD(credito,dialogView)
+                myDialog.dismiss()
             }
         }
 
-        myDialog.dismiss()
+
     }
 
     fun cargarBD(tipo:String,dialogView: View) {

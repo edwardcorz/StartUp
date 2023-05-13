@@ -2,7 +2,6 @@ package com.example.startup
 
 import android.content.Context
 import android.graphics.Color
-import android.text.BoringLayout
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -225,10 +224,10 @@ class conexionBD {
         verificarFechaAgendada(contexto, fecha) { agendada ->
             if (agendada) {
                 buttonAgendar.setText("Cancelar")
-                buttonAgendar.setBackgroundColor(Color.RED)
+                buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
             } else {
                 buttonAgendar.setText("Agendar")
-                buttonAgendar.setBackgroundColor(Color.BLUE)
+                buttonAgendar.setBackgroundColor(Color.rgb(36, 73, 95))
             }
         }
     }

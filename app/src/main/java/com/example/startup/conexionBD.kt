@@ -49,7 +49,7 @@ class conexionBD {
         }
 
     }
-    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String, inputMes: String, inputAño: String,inputCvv: String, inputTipo: String, inputCorre: String, inputPlan:String){
+    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String, inputMes: String, inputAño: String,inputCvv: String, inputTipo: String, inputCorre: String, inputPlan:String, texto:TextView){
         val currentUser = auth.currentUser
 
         val db = FirebaseFirestore.getInstance()
@@ -69,10 +69,10 @@ class conexionBD {
             userDocumentRef.set(userData)
                 .addOnSuccessListener {
                     Toast.makeText(contexto, "Pago hecho exitosamente!", Toast.LENGTH_SHORT).show()
+                    extraerPlan(texto)
 
                 }.addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
-
 
                 }
             //---------------
@@ -136,7 +136,7 @@ class conexionBD {
     }
 
 
-    fun guardarClase(contexto: Context, fecha: String) {
+    fun guardarClase(contexto: Context, fecha: String, buttonAgendar: Button) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
 
@@ -155,6 +155,8 @@ class conexionBD {
                         userDocumentRef.set(userData)
                             .addOnSuccessListener {
                                 Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
+                                buttonAgendar.setText("Cancelar")
+                                buttonAgendar.setBackgroundColor(Color.RED)
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
@@ -168,7 +170,7 @@ class conexionBD {
     }
 
 
-    fun eliminarFechaAgendada(contexto: Context, fecha: String) {
+    fun eliminarFechaAgendada(contexto: Context, fecha: String, buttonAgendar: Button) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
 
@@ -178,6 +180,8 @@ class conexionBD {
             userDocumentRef.update(fecha, FieldValue.delete())
                 .addOnSuccessListener {
                     Toast.makeText(contexto, "Fecha eliminada exitosamente", Toast.LENGTH_SHORT).show()
+                    buttonAgendar.setText("Agendar")
+                    buttonAgendar.setBackgroundColor(Color.BLUE)
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error al eliminar la fecha", Toast.LENGTH_SHORT).show()

@@ -51,11 +51,6 @@ class PaymentFragment : Listeners() {
         var buttonPersonalizado = root.findViewById<Button>(R.id.button_personalizado)
         dialogPayListener(buttonPersonalizado, root)
 
-
-
-        //pagarListener(root)
-        //conexion.guardarPagos()
-
         return root
 
     }

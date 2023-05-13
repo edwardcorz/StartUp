@@ -138,8 +138,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/nombreConfiguration"
             app:layout_constraintVertical_bias="0.576"
-            app:shapeAppearanceOverlay="@style/circleImageView"
-            app:srcCompat="@drawable/queen" />
+            app:shapeAppearanceOverlay="@style/circleImageView"/>
 
         <TextView
             android:id="@+id/nombreConfiguration"

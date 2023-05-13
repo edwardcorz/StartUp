@@ -1,12 +1,10 @@
 package com.example.startup.ui.configuration
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,13 +12,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.startup.LoginActivity
 import com.example.startup.R
 import com.example.startup.conexionBD
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
@@ -102,7 +100,6 @@ open class Listeners : Fragment() {
     }
 
     fun dialog3Listener(editBtn: TextView, root : View) {
-
         editBtn.setOnClickListener {
             val inflater  = LayoutInflater.from(requireActivity())
             val dialogView = inflater.inflate(R.layout.dialog3, null)
@@ -111,7 +108,6 @@ open class Listeners : Fragment() {
             myDialog.setCancelable(true)
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myDialog.show()
-
             cambiarNombre(dialogView,myDialog, root)
         }
     }
@@ -130,6 +126,8 @@ open class Listeners : Fragment() {
 
         }
     }
+
+
 
     fun cambiarNombre(dialogView : View , myDialog: Dialog, root:View){
 
@@ -162,99 +160,78 @@ open class Listeners : Fragment() {
                 .addOnFailureListener { exception ->
                     // Manejar el error al actualizar el nombre
                 }
-
-
-
-            fun dialogPhotoListener(btn: Button) {
-                btn.setOnClickListener {
-                    val inflater  = LayoutInflater.from(requireActivity())
-                    val dialogView = inflater.inflate(R.layout.dialog1, null)
-                    val myDialog = Dialog(requireContext())
-                    myDialog.setContentView(dialogView)
-                    myDialog.setCancelable(true)
-                    myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                    myDialog.show()
-
-                    guardar(dialogView,myDialog)
-                }
-            }
-
-            //prueba
-            /*
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            val profileUpdates = UserProfileChangeRequest.Builder()
-                .setDisplayName(nombre)
-                .build()
-
-            currentUser?.updateProfile(profileUpdates)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.i("TAG", "El nombre se actualizó correctamente")
-                        Toast.makeText(requireContext(), "El nombre se guardó correctamente", Toast.LENGTH_SHORT).show()
-
-                    } else {
-                        Log.i("TAG", "Hubo un error al actualizar el nombre")
-                    }
-                }*/
         }
 
     }
 
     fun dialogPhotoListener(imageView: ShapeableImageView, root: View) {
         imageView.setOnClickListener {
-            val dialogBinding = layoutInflater.inflate(R.layout.dialog_photo, null)
+            val inflater  = LayoutInflater.from(requireActivity())
+            val dialogView = inflater.inflate(R.layout.dialog_photo, null)
             val myDialog = Dialog(requireContext())
-            myDialog.setContentView(dialogBinding)
+            myDialog.setContentView(dialogView)
             myDialog.setCancelable(true)
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
             myDialog.show()
-            editarListener(dialogBinding)
+            editarButtom(dialogView)
+
+        }
+    }
+    fun editarButtom(dialogView : View){
+        val subir = dialogView.findViewById<Button>(R.id.editar)
+        subir.setOnClickListener{
+            editarListener.launch("image/*")
         }
     }
 
-
-    val storageReference = FirebaseStorage.getInstance().reference
-    fun  editarListener(dialogView: View){
-
-
-        val editar = dialogView.findViewById<Button>(R.id.editar)
-        editar.setOnClickListener{
-            subirFoto()
+    private val editarListener = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let { imageUri ->
+            // Aquí puedes subir la imagen a Firebase Storage y asociarla al usuario
+            subirFotoPerfil(imageUri)
         }
-
     }
 
-    companion object{
-        private const val PICK_IMAGE_REQUEST = 1
-    }
+    fun subirFotoPerfil(imageUri: Uri){
+        val storageRef = FirebaseStorage.getInstance().reference
+        val profileImagesRef = storageRef.child("profile_images")
 
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+        val uid = currentUser?.uid
 
-    fun subirFoto(){
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-    }
+        val imageRef = profileImagesRef.child("$uid.jpg") // uid es el identificador del usuario
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            val imageUri: Uri = data.data!!
-
-            // Genera un nombre de archivo único para la imagen de perfil
-            val fileName = "${System.currentTimeMillis()}_${imageUri.lastPathSegment}"
-
-            // Crea una referencia al archivo en Firebase Storage
-            val profileImageRef = storageReference.child("profile_images/$fileName")
-
-            // Sube la imagen al almacenamiento de Firebase Storage
-            profileImageRef.putFile(imageUri)
-                .addOnSuccessListener {
-                    // La imagen se ha subido exitosamente
-                    Toast.makeText(requireContext(), "Foto de perfil subida correctamente", Toast.LENGTH_SHORT).show()
+        imageRef.putFile(imageUri)
+            .addOnSuccessListener { taskSnapshot ->
+                // La imagen se ha subido exitosamente
+                // Puedes obtener la URL de descarga de la imagen y asociarla al usuario
+                imageRef.downloadUrl.addOnSuccessListener { uri ->
+                    val downloadUrl = uri.toString()
+                    // Aquí puedes guardar la URL de descarga en la base de datos junto con los detalles del usuario
+                    guardarURLFotoPerfil(downloadUrl)
                 }
-                .addOnFailureListener {
-                    // Error al subir la imagen
-                    Toast.makeText(requireContext(), "Error al subir la foto de perfil", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { exception ->
+                // Ocurrió un error al subir la imagen
+                // Puedes manejar el error según tus necesidades
+            }
+
+    }
+
+    fun guardarURLFotoPerfil(downloadUrl: String){
+        val db = FirebaseFirestore.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (uid != null) {
+            val usuarioRef = db.collection("usuarios").document(uid)
+
+            usuarioRef.update("fotoPerfilUrl", downloadUrl)
+                .addOnSuccessListener {
+                    // La URL de la foto de perfil se guardó exitosamente en Cloud Firestore
+                }
+                .addOnFailureListener { e ->
+                    // Ocurrió un error al guardar la URL de la foto de perfil
                 }
         }
     }

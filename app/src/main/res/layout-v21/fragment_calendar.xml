@@ -89,7 +89,7 @@
         android:layout_width="185dp"
         android:layout_height="27dp"
         android:fontFamily="@font/jost_bold"
-        android:text="Rutina del dia"
+        android:text="@string/titulo_rutina"
         android:textColor="@color/black"
         android:textColorLink="#595353"
         android:textSize="20sp"
@@ -99,6 +99,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
         app:layout_constraintVertical_bias="0.068" />
+
+    <Button
+        android:id="@+id/agendar_clase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/jost_bold"
+        android:text="@string/boton_agendar"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:elevation="10dp"
+        app:layout_constraintStart_toEndOf="@+id/rutina"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -177,14 +191,15 @@
                 android:id="@+id/seriesWod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/wod"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/jost_bold"
                 android:text=""
-                android:textSize="18sp"
-                android:layout_below="@+id/wod"/>
+                android:textSize="18sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -42,11 +42,11 @@ class   ConfigurationFragment : Listeners(){
         dialog3Listener(editBtn, root)
 
 
-        val imageView = binding.imageView // Reemplace 'btnOpenDialog' con el ID de su botón en el diseño
+        val imageView = binding.encabezado.imageView // Reemplace 'btnOpenDialog' con el ID de su botón en el diseño
         dialogPhotoListener(imageView, root)
 
 
-        var textView = root.findViewById<TextView>(R.id.nombreConfiguration)
+        var textView = root.findViewById<TextView>(R.id.nombre_banner)
 
         conexion.conexionNombre(textView)
 

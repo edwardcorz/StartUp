@@ -291,6 +291,8 @@ open class Listeners : Fragment() {
 
     fun subirFotoPerfil(imageUri: Uri){
         val storageRef = FirebaseStorage.getInstance().reference
+        //storageRef = Firebase.storage.reference
+
         val profileImagesRef = storageRef.child("profile_images")
 
         val firebaseAuth = FirebaseAuth.getInstance()
@@ -301,19 +303,13 @@ open class Listeners : Fragment() {
 
         imageRef.putFile(imageUri)
             .addOnSuccessListener { taskSnapshot ->
-                // La imagen se ha subido exitosamente
-                // Puedes obtener la URL de descarga de la imagen y asociarla al usuario
                 imageRef.downloadUrl.addOnSuccessListener { uri ->
                     val downloadUrl = uri.toString()
-                    // Aquí puedes guardar la URL de descarga en la base de datos junto con los detalles del usuario
                     guardarURLFotoPerfil(downloadUrl)
-
-
                 }
             }
             .addOnFailureListener { exception ->
-                // Ocurrió un error al subir la imagen
-                // Puedes manejar el error según tus necesidades
+                // mensaje de error
             }
     }
 

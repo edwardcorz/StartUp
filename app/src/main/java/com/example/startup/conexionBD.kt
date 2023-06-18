@@ -132,7 +132,6 @@ class conexionBD {
     }
 
     fun conexionNombre(textView : TextView){
-        Log.i("TAG", "conexion de nombre exitosa-----------")
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val userRef = db.collection("usuarios").document(userId!!)
 

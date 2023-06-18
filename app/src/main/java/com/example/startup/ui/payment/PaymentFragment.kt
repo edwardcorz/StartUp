@@ -46,7 +46,6 @@ class PaymentFragment : Listeners() {
 
 
         var buttonPagar = root.findViewById<Button>(R.id.button_pagar)
-
         dialogPayListener(buttonPagar, root,textViewPlan, textViewMiPlan)
 
         var buttonSemanal = root.findViewById<Button>(R.id.button_semanal)

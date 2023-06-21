@@ -23,7 +23,7 @@ Para ejecutar la aplicación en tu dispositivo, sigue los siguientes pasos:
 1. Clona este repositorio en tu máquina local:
 
    ```
-   git clone [https://github.com/edwardcorz/StartUp.git]
+   git clone https://github.com/edwardcorz/StartUp.git
    ```
 
 2. Abre el proyecto en Android Studio.

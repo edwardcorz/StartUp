@@ -17,13 +17,11 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 
+//Vista
 class HomeFragment : Fragment() {
-    private val conexion =conexionBD()
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private var controller: HomeFragmentController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,25 +31,58 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Crea el gráfico de barras
-        val chart = root.findViewById<BarChart>(R.id.chart)
+        // Crear el modelo
+        val model = TrainingSummaryModel()
 
-        val entries = listOf(
-            BarEntry(0f, 12f),
-            BarEntry(1f, 23f),
-            BarEntry(2f, 14f),
-            BarEntry(3f, 15f),
-            BarEntry(4f, 21f),
-            BarEntry(5f, 0f),
-            BarEntry(6f, 0f),
-            BarEntry(7f, 0f),
-            BarEntry(8f, 0f),
-            BarEntry(9f, 0f),
-            BarEntry(10f, 0f),
-            BarEntry(11f,0f)
-        )
+        // Crear el controlador y pasar el modelo
+        controller = HomeFragmentController(model)
 
-        val dataSet = BarDataSet(entries, "Resumen de entrenamiento")
+        // Configurar la vista y el modelo mediante el controlador
+        controller?.onViewCreated(root)
+
+        // Mostrar nombre del usuario
+        val textView = root.findViewById<TextView>(R.id.nombre_banner)
+        val textViewPlan = root.findViewById<TextView>(R.id.plan)
+        val conexion = conexionBD()
+
+        conexion.conexionNombre(textView)
+        conexion.extraerPlan(textViewPlan)
+        conexion.cargarFoto(requireContext(), root)
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        controller = null
+    }
+}
+
+// Clase modelo
+class TrainingSummaryModel {
+    val entries = listOf(
+        BarEntry(0f, 12f),
+        BarEntry(1f, 23f),
+        BarEntry(2f, 14f),
+        BarEntry(3f, 15f),
+        BarEntry(4f, 21f),
+        BarEntry(5f, 0f),
+        BarEntry(6f, 0f),
+        BarEntry(7f, 0f),
+        BarEntry(8f, 0f),
+        BarEntry(9f, 0f),
+        BarEntry(10f, 0f),
+        BarEntry(11f, 0f)
+    )
+}
+
+// Clase controlador
+class HomeFragmentController(private val model: TrainingSummaryModel) {
+    fun onViewCreated(view: View) {
+        val chart = view.findViewById<BarChart>(R.id.chart)
+
+        val dataSet = BarDataSet(model.entries, "Resumen de entrenamiento")
         dataSet.color = Color.rgb(120, 16, 2)
 
         val data = BarData(dataSet)
@@ -67,7 +98,6 @@ class HomeFragment : Fragment() {
         chart.axisLeft.axisMinimum = 0f
         chart.axisRight.isEnabled = false
 
-        // Configura el eje X
         val xAxis = chart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f
@@ -92,28 +122,11 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // Configura el eje Y
         chart.axisLeft.isEnabled = false
         chart.axisRight.isEnabled = false
         chart.axisLeft.axisMinimum = 0f
         chart.axisRight.axisMinimum = 0f
         chart.setVisibleXRangeMaximum(8f)
         chart.moveViewToX(1f)
-
-        // Mostrar nombre del usuario
-
-        var textView = root.findViewById<TextView>(R.id.nombre_banner)
-        var textViewPlan=root.findViewById<TextView>(R.id.plan)
-
-        conexion.conexionNombre(textView)
-        conexion.extraerPlan(textViewPlan)
-        conexion.cargarFoto(requireContext(),root)
-
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

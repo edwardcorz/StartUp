@@ -1,7 +1,6 @@
 package com.example.startup.ui.configuration
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -16,13 +15,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.startup.LoginActivity
-import com.example.startup.MainActivity
+import com.example.startup.ui.login.LoginActivity
 import com.example.startup.R
 import com.example.startup.conexionBD
-import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -117,7 +113,7 @@ open class Listeners : Fragment() {
         }
     }
     var ButtonSelected :Int? = null
-    fun dialogPayListener(button_pagar: Button, root : View, texto:TextView, textViewMiPlan:TextView) {
+    fun dialogPayListener(button_pagar: Button, root : View) {
 
         button_pagar.setOnClickListener {
             ButtonSelected = button_pagar.id
@@ -131,7 +127,7 @@ open class Listeners : Fragment() {
 
 
             validarCheckBox(dialogView)
-            pagarListener(dialogView, root , myDialog,texto, textViewMiPlan)
+            pagarListener(dialogView, myDialog)
 
         }
     }
@@ -153,13 +149,13 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun pagarListener(dialogView: View, root : View, myDialog : Dialog, texto:TextView, textViewMiPlan:TextView){
-        val pagar = dialogView.findViewById<Button>(R.id.pagar)
+    fun pagarListener(root: View, myDialog : Dialog, ){
+        val pagar = root.findViewById<Button>(R.id.pagar)
         pagar.setOnClickListener{
-            validarCampos(dialogView, root, myDialog,texto, textViewMiPlan)
+            validarCampos(root,myDialog)
         }
     }
-    fun validarTipoTarjeta(dialogView: View, root : View, myDialog: Dialog,texto:TextView,textViewMiPlan:TextView){
+    fun validarTipoTarjeta(dialogView: View, myDialog: Dialog){
         val creditoCheck = dialogView.findViewById<CheckBox>(R.id.checkCredito)
         val debitoCheck = dialogView.findViewById<CheckBox>(R.id.checkDebito)
         if (!creditoCheck.isChecked and !debitoCheck.isChecked){
@@ -168,13 +164,13 @@ open class Listeners : Fragment() {
         else{
             if (creditoCheck.isChecked) {
                 val credito = "credito"
-                cargarBD(credito,dialogView, root, texto,textViewMiPlan)
+                cargarBD(credito,dialogView)
                 myDialog.dismiss()
 
             }
             else{
                 val credito = "debito"
-                cargarBD(credito,dialogView,root, texto, textViewMiPlan)
+                cargarBD(credito,dialogView)
                 myDialog.dismiss()
             }
         }
@@ -182,7 +178,7 @@ open class Listeners : Fragment() {
 
     }
 
-    fun cargarBD(tipo:String,dialogView: View, root : View,texto:TextView, textViewMiPlan:TextView) {
+    fun cargarBD(tipo:String,dialogView: View) {
         val nombreTarjeta =
             dialogView.findViewById<EditText>(R.id.name_person).text.toString()
         val numeroTarjeta =
@@ -217,7 +213,7 @@ open class Listeners : Fragment() {
             cvvNumber,
             tipo,
             correo,
-            plan,texto, textViewMiPlan, root
+            plan
         )
     }
 
@@ -270,11 +266,11 @@ open class Listeners : Fragment() {
             myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             conexion.cargarFoto(requireContext(), dialogView)
             myDialog.show()
-            editarButtom(dialogView, myDialog,root,imageView)
+            editarButtom(dialogView, myDialog,root)
             volverListener(dialogView, myDialog)
         }
     }
-    fun editarButtom(dialogView : View, myDialog: Dialog, root: View, imageView: ImageView){
+    fun editarButtom(dialogView : View, myDialog: Dialog, root: View){
         val subir = dialogView.findViewById<Button>(R.id.editar)
         subir.setOnClickListener{
             myDialog.dismiss()
@@ -291,8 +287,6 @@ open class Listeners : Fragment() {
 
     fun subirFotoPerfil(imageUri: Uri){
         val storageRef = FirebaseStorage.getInstance().reference
-        //storageRef = Firebase.storage.reference
-
         val profileImagesRef = storageRef.child("profile_images")
 
         val firebaseAuth = FirebaseAuth.getInstance()
@@ -303,13 +297,19 @@ open class Listeners : Fragment() {
 
         imageRef.putFile(imageUri)
             .addOnSuccessListener { taskSnapshot ->
+                // La imagen se ha subido exitosamente
+                // Puedes obtener la URL de descarga de la imagen y asociarla al usuario
                 imageRef.downloadUrl.addOnSuccessListener { uri ->
                     val downloadUrl = uri.toString()
+                    // Aquí puedes guardar la URL de descarga en la base de datos junto con los detalles del usuario
                     guardarURLFotoPerfil(downloadUrl)
+
+
                 }
             }
             .addOnFailureListener { exception ->
-                // mensaje de error
+                // Ocurrió un error al subir la imagen
+                // Puedes manejar el error según tus necesidades
             }
     }
 
@@ -330,7 +330,7 @@ open class Listeners : Fragment() {
         }
     }
 
-    fun validarCampos(dialogView: View, root : View,myDialog: Dialog,texto:TextView, textViewMiPlan:TextView){
+    fun validarCampos(dialogView: View,myDialog: Dialog){
         val nombreTarjeta =
             dialogView.findViewById<EditText>(R.id.name_person).text
         val numeroTarjeta =
@@ -341,31 +341,25 @@ open class Listeners : Fragment() {
         val correo = dialogView.findViewById<EditText>(R.id.correo).text
 
         val pagar = dialogView.findViewById<Button>(R.id.pagar)
-        if (nombreTarjeta.isEmpty() || numeroTarjeta.isEmpty() || mesTarjeta.isEmpty()
-            || añoTarjeta.isEmpty() || cvvNumber.isEmpty() || correo.isEmpty()){
+        pagar.setOnClickListener{
+            if (nombreTarjeta.isEmpty() || numeroTarjeta.isEmpty() || mesTarjeta.isEmpty()
+                || añoTarjeta.isEmpty() || cvvNumber.isEmpty() || correo.isEmpty()){
 
-            Toast.makeText(requireContext(), "LLena todos los campos", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "LLena todos los campos", Toast.LENGTH_SHORT)
                     .show()
-        }
-        else{
-            validarTipoTarjeta(dialogView, root,  myDialog,texto, textViewMiPlan)
+            }
+            else{
+                validarTipoTarjeta(dialogView, myDialog)
+            }
         }
     }
 
-    fun agendarClase(contexto:Context,buttonAgendar: Button, fecha:String){
+    fun agendarClase(buttonAgendar: Button, fecha:String){
+
         buttonAgendar.setOnClickListener{
-            conexion.verificarFechaAgendada(contexto, fecha) { agendada ->
-                if (agendada) {
-                    conexion.eliminarFechaAgendada(contexto, fecha,buttonAgendar)
-                    //conexion.cambiarBoton(contexto,fecha, buttonAgendar)
-                } else {
-                    conexion.guardarClase(contexto, fecha,buttonAgendar)
-
-                }
-            }
-
-            conexion.cambiarBoton(contexto,fecha, buttonAgendar)
-
+            conexion.guardarClase(requireContext(),fecha)
+            buttonAgendar.setText("Cancelar")
+            buttonAgendar.setBackgroundColor(Color.RED)
         }
     }
 }

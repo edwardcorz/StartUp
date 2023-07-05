@@ -16,7 +16,7 @@
             android:exported="false"
             android:theme="@style/Theme.StartUp"/>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.StartUp.NoActionBar">
             <intent-filter>
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.login.RegisterActivity"
             android:theme="@style/Theme.StartUp.NoActionBar"
             android:exported="false" />
     </application>

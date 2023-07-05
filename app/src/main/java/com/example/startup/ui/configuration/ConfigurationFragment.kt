@@ -14,7 +14,7 @@ import com.example.startup.conexionBD
 
 // Importar las bibliotecas necesarias para cambiar foto de perfil
 
-class   ConfigurationFragment : Listeners(){
+class ConfigurationFragment : Listeners(){
     private val conexion = conexionBD()
     private var _binding: FragmentConfigurationBinding? = null
 

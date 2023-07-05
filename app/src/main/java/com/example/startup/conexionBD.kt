@@ -48,23 +48,7 @@ class conexionBD {
         }
 
     }
-
-    fun extraerPlan2(textView : TextView){
-        val db = FirebaseFirestore.getInstance()
-        val userId = FirebaseAuth.getInstance().currentUser?.uid
-        val docRef = db.collection("usuariosPagos").document(userId!!)
-        docRef.get().addOnSuccessListener { document ->
-            val valorCampo = document.getString("plan")
-            textView.text = valorCampo
-        }.addOnFailureListener { exception ->
-            // Ocurrió un error al obtener el documento
-            Log.d("TAG", "Error al obtener el documento: $exception")
-        }
-
-    }
-    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String,
-                     inputMes: String, inputAño: String,inputCvv: String, inputTipo: String,
-                     inputCorre: String, inputPlan:String, texto:TextView, textViewMiPlan:TextView, root : View,){
+    fun guardarPagos(contexto: Context, inputName : String, inputNumTarjeta: String, inputMes: String, inputAño: String,inputCvv: String, inputTipo: String, inputCorre: String, inputPlan:String){
         val currentUser = auth.currentUser
 
         val db = FirebaseFirestore.getInstance()
@@ -75,7 +59,7 @@ class conexionBD {
                 "nombreTitular" to inputName,
                 "numeroTarjeta" to inputNumTarjeta,
                 "mes" to inputAño,
-                "año" to inputMes,
+                "año" to inputCvv,
                 "cvv" to inputCvv,
                 "tipo" to inputTipo,
                 "correo" to inputCorre,
@@ -84,12 +68,10 @@ class conexionBD {
             userDocumentRef.set(userData)
                 .addOnSuccessListener {
                     Toast.makeText(contexto, "Pago hecho exitosamente!", Toast.LENGTH_SHORT).show()
-                    extraerPlan(texto)
-                    extraerPlan(textViewMiPlan)
-                    root.findViewById<TextView>(R.id.miPlan).text = inputPlan
 
                 }.addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
+
 
                 }
             //---------------
@@ -132,6 +114,7 @@ class conexionBD {
     }
 
     fun conexionNombre(textView : TextView){
+        Log.i("TAG", "conexion de nombre exitosa-----------")
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val userRef = db.collection("usuarios").document(userId!!)
 
@@ -151,8 +134,17 @@ class conexionBD {
             }
     }
 
+    var agenda = false
+    fun onButtonClick(contexto: Context, fecha: String){
+        if (agenda){
+            eliminarFechaAgendada(contexto, fecha)
+        }else{
+            guardarClase(contexto, fecha)
 
-    fun guardarClase(contexto: Context, fecha: String, buttonAgendar: Button) {
+        }
+
+    }
+    fun guardarClase(contexto: Context, fecha: String) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
 
@@ -161,29 +153,14 @@ class conexionBD {
 
             userDocumentRef.get()
                 .addOnSuccessListener { documentSnapshot ->
-                    if (documentSnapshot.exists()) {
-                        val userData = documentSnapshot.data
+                    // Obtener los datos existentes del documento
+                    val userData = documentSnapshot.data
 
-                        if (userData != null) {
-                            // Agregar la nueva fecha al campo existente
-                            userData[fecha] = "Agendada"
+                    if (userData != null) {
+                        // Agregar la nueva fecha al campo existente
+                        userData[fecha] = "Agendada"
 
-                            userDocumentRef.set(userData)
-                                .addOnSuccessListener {
-                                    Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
-                                    buttonAgendar.setText("Cancelar")
-                                    buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
-                                }
-                                .addOnFailureListener { e ->
-                                    Toast.makeText(contexto, "Error en el pago", Toast.LENGTH_SHORT).show()
-                                }
-                        }
-                    } else {
-                        val newUserData = hashMapOf(
-                            fecha to "Agendada"
-                        )
-
-                        userDocumentRef.set(newUserData)
+                        userDocumentRef.set(userData)
                             .addOnSuccessListener {
                                 Toast.makeText(contexto, "Se agendó exitosamente!", Toast.LENGTH_SHORT).show()
                             }
@@ -199,8 +176,7 @@ class conexionBD {
     }
 
 
-
-    fun eliminarFechaAgendada(contexto: Context, fecha: String, buttonAgendar: Button) {
+    fun eliminarFechaAgendada(contexto: Context, fecha: String) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
 
@@ -210,8 +186,6 @@ class conexionBD {
             userDocumentRef.update(fecha, FieldValue.delete())
                 .addOnSuccessListener {
                     Toast.makeText(contexto, "Fecha eliminada exitosamente", Toast.LENGTH_SHORT).show()
-                    buttonAgendar.setText("Agendar")
-                    buttonAgendar.setBackgroundColor(Color.rgb(36, 73, 95))
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error al eliminar la fecha", Toast.LENGTH_SHORT).show()
@@ -220,7 +194,7 @@ class conexionBD {
     }
 
 
-    fun verificarFechaAgendada(contexto: Context, fecha: String, callback: (Boolean) -> Unit) {
+    fun verificarFechaAgendada(contexto: Context, fecha: String, buttonAgendar:Button) {
         val currentUser = auth.currentUser
         val db = FirebaseFirestore.getInstance()
 
@@ -235,31 +209,22 @@ class conexionBD {
                     if (userData != null) {
                         // Verificar si la fecha está agendada
                         val agendada = userData.containsKey(fecha) && userData[fecha] == "Agendada"
-                        callback(agendada)
-                    } else {
-                        callback(false)
+
+                        if (agendada) {
+                            Toast.makeText(contexto, "La fecha está agendada", Toast.LENGTH_SHORT).show()
+                            buttonAgendar.setText("Cancelar")
+                            buttonAgendar.setBackgroundColor(Color.RED)
+                        } else {
+                            Toast.makeText(contexto, "La fecha no está agendada", Toast.LENGTH_SHORT).show()
+                            buttonAgendar.setText("Agendar")
+                            buttonAgendar.setBackgroundColor(Color.BLUE)
+
+                        }
                     }
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(contexto, "Error al obtener los datos", Toast.LENGTH_SHORT).show()
-                    callback(false)
                 }
-        } else {
-            callback(false)
-        }
-    }
-
-
-
-    fun cambiarBoton(contexto: Context, fecha: String, buttonAgendar: Button) {
-        verificarFechaAgendada(contexto, fecha) { agendada ->
-            if (agendada) {
-                buttonAgendar.setText("Cancelar")
-                buttonAgendar.setBackgroundColor(Color.rgb(120, 16, 21))
-            } else {
-                buttonAgendar.setText("Agendar")
-                buttonAgendar.setBackgroundColor(Color.rgb(36, 73, 95))
-            }
         }
     }
 

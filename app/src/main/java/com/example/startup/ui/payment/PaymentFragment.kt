@@ -10,7 +10,6 @@ import com.example.startup.R
 import com.example.startup.conexionBD
 import com.example.startup.databinding.FragmentPaymentBinding
 import com.example.startup.ui.configuration.Listeners
-import com.stripe.android.PaymentConfiguration
 
 
 class PaymentFragment : Listeners() {
@@ -22,15 +21,12 @@ class PaymentFragment : Listeners() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        PaymentConfiguration.init(requireContext(),
-            "pk_test_51NOmWOKW6CpV4SSu2Quztenqyh9ibxikHNvMF9HZVF47Zcn8zNMuj8NGIT2dI4nV13CPuGN1HXU24ekJSiERGr3u00Nq70nAKb"
-        )
 
         _binding = FragmentPaymentBinding.inflate(inflater, container, false)
         val root: View = binding.root

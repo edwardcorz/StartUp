@@ -83,7 +83,7 @@ class HomeFragmentController(private val model: TrainingSummaryModel) {
         val chart = view.findViewById<BarChart>(R.id.chart)
 
         val dataSet = BarDataSet(model.entries, "Resumen de entrenamiento")
-        dataSet.color = Color.rgb(120, 16, 2)
+        dataSet.color = Color.rgb(10, 103, 172)
 
         val data = BarData(dataSet)
         data.barWidth = 0.3f

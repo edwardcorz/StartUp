@@ -54,7 +54,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="10dp"
                 android:drawableTop="@drawable/edit_icon_24"
-                app:backgroundTint="#AC3131" />
+                app:backgroundTint="@color/azul" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -99,7 +99,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="10dp"
                 android:drawableTop="@drawable/baseline_logout_24"
-                app:backgroundTint="@color/buttonRed" />
+                app:backgroundTint="@color/azul" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
